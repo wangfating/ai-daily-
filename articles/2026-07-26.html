@@ -23,55 +23,76 @@
 </head>
 <body>
 <a href="../index.html" class="back">← 返回首页</a>
+<h1>ECC：Agent Harness 性能优化系统——让 AI 编码助手真正&quot;开挂&quot;</h1>
 <h2>📌 项目是什么</h2>
-<p><strong>ECC（The Agent Harness Operating System）</strong> 是一个面向 AI 编程代理（AI Agent）的跨平台性能优化系统。它的核心定位是：把分散在各 AI 编码工具中的配置、能力与工作流统一起来，形成一套可复用、可迁移的&quot;代理操作系统&quot;。简单说，如果你同时用 Claude Code、Cursor、Codex、OpenCode 等多个 AI 编程助手，ECC 能帮你一套配置走遍所有工具，避免在每个工具里重复折腾。</p>
-<p>项目由作者 affaan-m 发起，经过 10+ 个月的高强度日常工程实践打磨，积累了 23 万+ Star 和 35000+ Fork，背后有 230+ 位贡献者。它不是简单的配置文件集合，而是涵盖了<strong>技能（Skills）、直觉规则（Instincts）、记忆优化、安全扫描、持续学习</strong>等完整能力的生产级系统。同时，项目提供 MIT 完全开源版本（ECC OSS），并配套 ECC Pro 付费版（GitHub App），为私有仓库提供托管服务。</p>
+<p>ECC（发音同 &quot;echo&quot;）是一个面向 AI 编码助手的 <strong>Agent Harness 性能优化系统</strong>。它的定位不是某个单一工具，而是一套覆盖 <strong>Claude Code、Codex、Cursor、OpenCode、Gemini、Zed、GitHub Copilot</strong> 等多个 AI 编码平台的完整工作流基础设施。作者 affaan-m 将其定义为&quot;Harness-native operator system&quot;——也就是说，它直接嵌入到你日常使用的 AI 编码工具中，提供技能（Skills）、直觉决策（Instincts）、记忆优化（Memory）、安全扫描（Security）和研究驱动开发（Research-first development）等能力。</p>
+<p>项目经过 <strong>10+ 个月</strong> 的真实产品开发实战打磨，累计获得 <strong>23 万+ Star</strong> 和 <strong>3.5 万+ Fork</strong>，由 <strong>230+ 贡献者</strong> 共同维护，支持 <strong>12+ 种编程语言生态</strong>。ECC v2.0.0 进一步引入了 <strong>Hermes Operator</strong> 体系，将可复用的能力层与具体的 Harness 操作故事解耦，使跨平台工作流更加统一和高效。</p>
+<p>简单来说，ECC 解决的核心痛点是：<strong>AI 编码助手虽然强大，但在实际工程中往往缺乏&quot;经验复用&quot;、&quot;安全约束&quot;和&quot;持续进化&quot;的能力</strong>。ECC 通过系统化的 Skills、Memory 和 Hooks 机制，把 AI 助手从一个&quot;每次对话都从零开始&quot;的聊天窗口，变成一个有记忆、有技能、有安全边界的真正工程伙伴。</p>
+<hr>
 <h2>🎯 适用场景</h2>
 <ol>
-<li><strong>多工具 AI 编程用户</strong>：同时使用 Claude Code、Cursor、Codex 等多个 AI 助手，希望一套配置无缝切换，减少重复劳动。</li>
-<li><strong>团队协作与标准化</strong>：团队需要统一的 AI 编码规范、安全策略和 MCP（Model Context Protocol）配置，ECC 提供了可分发的规则和技能包。</li>
-<li><strong>生产环境 AI Agent 部署</strong>：需要为 AI Agent 注入安全扫描、记忆优化和持续学习能力的工程场景，ECC 提供了生产级别的 hook 和规则体系。</li>
-<li><strong>MCP 工作流管理</strong>：使用 MCP（Model Context Protocol）连接外部工具和数据源时，ECC 的 MCP 配置管理能力可以简化接入流程。</li>
-<li><strong>长期 AI 辅助开发项目</strong>：项目周期长、需求迭代频繁，ECC 的&quot;持续学习&quot;和&quot;记忆优化&quot;机制能帮助 AI 代理在长期协作中保持上下文一致性。</li>
+<li><p><strong>跨平台 AI 编码工作流统一管理</strong><br>你同时使用 Claude Code 和 Cursor，但两套工具的配置和技能无法互通。ECC 提供统一层，让一套 Skills 和 Memory 跨 Harness 生效。</p>
+</li>
+<li><p><strong>团队级别的 AI 编码规范与安全扫描</strong><br>在多人协作项目中，需要确保 AI 生成的代码遵循团队规范、不引入安全漏洞。ECC 的安全扫描和规则引擎可以在 AI 输出阶段就进行拦截和修正。</p>
+</li>
+<li><p><strong>长期项目的 AI 记忆与知识积累</strong><br>大型项目迭代数周后，AI 助手往往&quot;忘记&quot;之前的上下文和架构决策。ECC 的 Memory Optimization 模块让 AI 持续学习项目历史，减少重复沟通成本。</p>
+</li>
+<li><p><strong>MCP（Model Context Protocol）配置与编排</strong><br>需要为不同项目配置不同的 MCP 工具链时，ECC 提供标准化的 MCP 配置管理和快速切换能力。</p>
+</li>
+<li><p><strong>从开源到私有的平滑迁移</strong><br>项目开源版（MIT 协议）满足个人和开源项目需求，而 ECC Pro + GitHub App 则面向私有仓库团队，提供托管的 AI 工具链管理服务（从 $19/seat/mo 起）。</p>
+</li>
 </ol>
+<hr>
 <h2>✨ 核心特性</h2>
 <ul>
-<li><strong>跨 Harness 兼容</strong>：一套配置同时适配 Claude Code、Cursor、Codex、OpenCode、Gemini、Zed、GitHub Copilot 等 7+ 个 AI 编程工具。</li>
-<li><strong>Skills 技能体系</strong>：可复用的 AI 代理技能包，覆盖常见开发场景，即插即用。</li>
-<li><strong>Instincts 直觉规则</strong>：基于真实工程经验提炼的自动化行为规则，让 AI 代理&quot;越用越聪明&quot;。</li>
-<li><strong>Memory 记忆优化</strong>：对 AI 代理的上下文记忆进行智能管理，避免长对话中的信息丢失和上下文膨胀。</li>
-<li><strong>Security Scanning 安全扫描</strong>：内置安全检查能力，在 AI 生成代码或执行操作时自动检测风险。</li>
-<li><strong>MCP 配置管理</strong>：统一管理 Model Context Protocol 的连接与配置，简化外部工具接入。</li>
-<li><strong>Hooks 钩子机制</strong>：支持在工作流各节点注入自定义逻辑，实现高度可定制的自动化流程。</li>
-<li><strong>12+ 语言生态支持</strong>：涵盖 JavaScript/TypeScript、Python、Go、Java、Perl、Shell、Markdown 等多语言开发场景。</li>
+<li><p><strong>Skills（技能库）</strong><br>预置和自定义的可复用 AI 工作流技能，覆盖常见工程任务，开箱即用。</p>
+</li>
+<li><p><strong>Instincts（直觉机制）</strong><br>基于项目上下文和工程模式的自动决策辅助，让 AI 助手在代码审查、架构选择等场景下更&quot;懂行&quot;。</p>
+</li>
+<li><p><strong>Memory Optimization（记忆优化）</strong><br>持久化 AI 与项目的交互历史和上下文，避免每次会话都从零开始，显著提升长周期项目的连贯性。</p>
+</li>
+<li><p><strong>Security Scanning（安全扫描）</strong><br>在 AI 生成代码阶段即进行安全漏洞检测和规范检查，防患于未然。</p>
+</li>
+<li><p><strong>Hooks（钩子系统）</strong><br>可在 AI 工作流的关键节点注入自定义逻辑，实现 CI/CD 集成、自动化测试触发等高级编排。</p>
+</li>
+<li><p><strong>MCP 配置管理</strong><br>统一管理和切换不同项目的 Model Context Protocol 配置，降低多项目环境下的配置碎片化问题。</p>
+</li>
+<li><p><strong>跨 Harness 兼容</strong><br>一套系统适配 Claude Code、Codex、Cursor、OpenCode、Gemini、Zed、GitHub Copilot 等主流 AI 编码平台，无需为每个工具单独配置。</p>
+</li>
+<li><p><strong>研究驱动的持续演进</strong><br>作者强调&quot;Research-first development&quot;，项目本身基于真实工程场景打磨，版本迭代（如 v2.0.0）持续引入架构优化和新能力。</p>
+</li>
 </ul>
-<blockquote>
-<p>💡 ECC v2.0.0 新增了 <strong>Hermes Operator</strong> 公共故事层（Public Hermes Operator Story），在可复用层之上提供更完整的操作范式，详见 <a href="docs/HERMES-SETUP.md">Hermes Setup Guide</a> 和 <a href="docs/releases/2.0.0/release-notes.md">2.0.0 发布说明</a>。</p>
-</blockquote>
+<hr>
 <h2>🚀 快速上手</h2>
-<p>ECC 提供多种安装方式，OSS 版本完全免费：</p>
-<p><strong>1. 通过 npm 安装（推荐）</strong></p>
-<pre><code class="language-bash"># 安装通用包
+<p>ECC 提供多种安装方式，官方明确要求<strong>仅从以下验证渠道安装</strong>，第三方镜像可能存在安全风险：</p>
+<h3>方式一：npm 包安装</h3>
+<p>ECC 提供两个核心 npm 包：</p>
+<pre><code class="language-bash"># 通用包（跨平台）
 npm install ecc-universal
 
-# 安装 AgentShield 安全组件
+# Agent Shield（安全层）
 npm install ecc-agentshield
 </code></pre>
-<p><strong>2. 通过 GitHub App 安装（免费）</strong></p>
-<p>前往 <a href="https://github.com/apps/ecc-tools">ECC Tools GitHub App</a> 一键安装到你的仓库，支持私有仓库的 Pro 版本（从 $19/座位/月 起）。</p>
-<p><strong>3. 从源码部署</strong></p>
-<pre><code class="language-bash">git clone https://github.com/affaan-m/ECC.git
-cd ECC
-# 按照项目内的配置指引进行设置
-</code></pre>
-<p><strong>安装后配置</strong>：</p>
-<p>安装完成后，ECC 会自动为你的 AI 编程工具注入优化配置。你可以在项目根目录查看生成的配置文件，根据需要调整 Skills、Instincts 和 MCP 设置。详细配置指南请参考项目官网 <a href="https://ecc.tools">ecc.tools</a> 和文档目录 <code>docs/</code> 下的各 harness 适配指南。</p>
+<h3>方式二：GitHub App（推荐团队使用）</h3>
+<p>前往 <a href="https://github.com/apps/ecc-tools">GitHub App - ECC Tools</a> 直接安装到你的仓库，私有仓库可通过 <a href="https://ecc.tools/pricing">ECC Pro 定价页面</a> 了解费用。</p>
+<h3>方式三：插件方式</h3>
+<p>如果你的编辑器或工具支持插件市场，可搜索插件 slug <strong><code>ecc@ecc</code></strong> 进行安装。</p>
+<h3>进一步阅读</h3>
+<ul>
+<li><strong>Hermes Operator 设置指南</strong>：<a href="https://github.com/affaan-m/ECC/blob/main/docs/HERMES-SETUP.md">docs/HERMES-SETUP.md</a></li>
+<li><strong>v2.0.0 发布说明</strong>：<a href="https://github.com/affaan-m/ECC/blob/main/docs/releases/2.0.0/release-notes.md">docs/releases/2.0.0/release-notes.md</a></li>
+<li><strong>跨 Harness 架构设计</strong>：<a href="https://github.com/affaan-m/ECC/blob/main/docs/architecture/cross-harness.md">docs/architecture/cross-harness.md</a></li>
+<li><strong>官方文档与教程</strong>：<a href="https://ecc.tools">ecc.tools</a></li>
+<li><strong>社区交流</strong>：<a href="https://discord.gg/36yGMHGFbR">Discord 社区</a></li>
+</ul>
 <blockquote>
-<p>⚠️ <strong>安全提醒</strong>：请仅从上述官方渠道安装 ECC。第三方重新上传的镜像未经项目维护，可能包含恶意代码。</p>
+<p>⚠️ <strong>安全提醒</strong>：请务必从 <code>github.com/affaan-m/ECC</code>、npm 官方源或 GitHub App 官方页面安装。第三方重传和未经验证的镜像不受项目维护，可能包含恶意代码。</p>
 </blockquote>
+<hr>
 <h2>💡 总结与展望</h2>
-<p>ECC 是目前 AI 编程代理领域最完整的&quot;跨工具统一层&quot;之一。对于同时使用多个 AI 编码助手的开发者和团队来说，它能显著降低配置成本、提升工作流的稳定性和安全性。随着 v2.0.0 引入 Hermes Operator 等新范式，ECC 正在从&quot;配置管理工具&quot;进化成真正的&quot;AI 代理操作系统&quot;。如果你是 AI 辅助开发的深度用户，或者正在寻找团队级别的 AI 工程化方案，ECC 值得认真一试。</p>
-<p><strong>项目链接</strong>：<a href="https://github.com/affaan-m/ECC">https://github.com/affaan-m/ECC</a></p>
+<p>ECC 是目前 GitHub 上 <strong>Star 数超过 23 万</strong> 的 AI 编码工程化基础设施项目，它把&quot;AI 辅助编程&quot;从零散的 prompt 工程提升到了<strong>系统化、工程化、可复用</strong>的层面。对于每天在 Claude Code、Cursor、Codex 等工具之间切换的开发者来说，ECC 意味着更少的重复配置、更强的安全护栏和更持久的 AI 记忆——这些正是构建真正&quot;生产级&quot;AI 工作流所缺失的拼图。如果你正在寻找一套能让 AI 编码助手持续进化、团队协作更顺畅的底层系统，ECC 值得深入一试。</p>
+<hr>
+<p><strong>🔗 项目链接：</strong> <a href="https://github.com/affaan-m/ECC">https://github.com/affaan-m/ECC</a></p>
 
 </body>
 </html>
