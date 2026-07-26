@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>🔥 auto_reg — codex全自动注册机</title>
+<title>📖 文章推荐 — https://mp.weixin.qq.com/s/-xc</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; background: #fff; color: #222; line-height: 1.8; }
   h1 { font-size: 24px; border-bottom: 2px solid #0366d6; padding-bottom: 10px; }
@@ -23,238 +23,192 @@
 </head>
 <body>
 <a href="../index.html" class="back">← 返回首页</a>
-<h1>auto_reg：让 AI 平台账号注册自动化——Any Auto Register 深度测评</h1>
+<h1>用 AI 做视频，不需要学剪辑：HyperFrames + WorkBuddy 实战深度解读</h1>
 <hr>
-<h2>📌 项目是什么</h2>
-<p>在 AI 浪潮席卷全球的今天，ChatGPT、Cursor、Kiro、Grok 等 AI 平台已成为开发者和研究者的必备工具。然而，这些平台普遍存在注册门槛高、验证码复杂、邮箱验证繁琐等问题——尤其是当你有多个账号需求时（比如多环境测试、多用户管理、A/B 测试等），手动重复注册不仅耗时耗力，还容易因为操作过于频繁而被平台封禁 IP 或账号。</p>
-<p><strong>auto_reg（Any Auto Register）</strong> 正是为此而生。它是一个<strong>多平台账户自动注册与管理系统</strong>，覆盖了从 ChatGPT、Trae.ai、Cursor 到 Kiro、Grok 等多个热门 AI 平台。项目的核心价值在于：<strong>用自动化思维替代手工操作</strong>——内置浏览器引擎（Playwright + Camoufox）模拟真实用户行为，集成临时邮箱服务和验证码自动识别，配合 Web 管理界面，让&quot;一键注册&quot;从幻想变成现实。</p>
-<p><img src="https://api.star-history.com/svg?repos=dsclca12/auto_reg&type=Date" alt="Star History Chart"></p>
-<blockquote>
-<p>项目基于 lxf746 的 <code>any-auto-register</code> 进行了三代迭代更新，技术栈升级为 FastAPI + React，架构更清晰，扩展性更强。</p>
-</blockquote>
+<h2>📌 这篇文章说了什么</h2>
+<p>这篇文章记录了一次完整的 AI 视频制作实战：用 <strong>WorkBuddy</strong>（腾讯出品的 AI 桌面助手）+ <strong>HyperFrames</strong>（HeyGen 开源的视频生成框架），从零开始，只用一次对话就做出了 30 秒的「AI 发展三阶段」科普短片。</p>
+<p>核心流程是：<strong>在对话框里描述视频需求 → WorkBuddy 自动生成符合规范的 HTML → HyperFrames 渲染输出 MP4</strong>。全程不需要打开剪映、不需要学时间轴、不需要真人出镜。作者还展示了如何通过多轮对话迭代优化视频——加动画、加转场、加配音字幕，每一步都是&quot;说一句改一处&quot;。</p>
+<p>这篇文章的价值在于，它把一条完整的 AI 视频工作流拆成了可复现的步骤，并揭示了当前工具的边界和坑点，对想低成本产出科普/解说类视频的创作者有直接参考价值。</p>
 <hr>
-<h2>🎯 适用场景</h2>
-<ul>
-<li><strong>AI 平台批量测试</strong>：开发者需要同时测试多个 ChatGPT / Cursor 账号的功能差异，auto_reg 可以快速批量生成账号，省去重复劳动。</li>
-<li><strong>研究与学习</strong>：安全研究人员或学生想了解不同 AI 平台的注册流程、风控机制，通过本项目可在合规范围内进行技术学习。</li>
-<li><strong>多账号环境管理</strong>：团队协作中需要为不同成员或项目准备独立账号，auto_reg 的批量注册和 Token 管理功能可以统一维护。</li>
-<li><strong>临时需求快速获取</strong>：只需要一个短期使用的 AI 账号，不想绑定真实邮箱，auto_reg 内置的临时邮箱方案可以快速搞定。</li>
-<li><strong>自动化工作流集成</strong>：通过 API 接口和定时任务功能，将账号注册融入 CI/CD 或其他自动化脚本中。</li>
-</ul>
-<hr>
-<h2>✨ 核心特性</h2>
-<ul>
-<li>🎯 <strong>多平台全覆盖</strong>：支持 ChatGPT、Trae.ai、Cursor、Kiro、Grok、Tavily、OpenBlockLabs 等主流 AI 平台，且功能完整度各不相同（部分平台支持 Token 管理和状态同步）。</li>
-<li>🔌 <strong>插件化架构</strong>：采用标准化接口设计，新增平台只需编写插件即可接入，无需改动核心代码。</li>
-<li>📧 <strong>丰富的邮箱方案</strong>：内置 LuckMail、MoeMail、TempMail.lol、SkyMail、DuckMail 等 10+ 种临时/自托管邮箱服务，适配不同平台的注册要求。</li>
-<li>🤖 <strong>双引擎验证码处理</strong>：集成 YesCaptcha（第三方打码平台）和本地 Turnstile Solver，兼顾成功率和隐私性。</li>
-<li>🌐 <strong>代理池管理</strong>：内置代理支持，配合随机延迟机制，有效降低被平台风控拦截的概率。</li>
-<li>📊 <strong>Web 管理界面</strong>：基于 React + Ant Design 构建的可视化面板，无需命令行即可完成所有操作。</li>
-<li>🔄 <strong>定时任务支持</strong>：支持周期性自动注册，配合批量上传功能，单次最多可处理 1000 个账号。</li>
-<li>🚀 <strong>一键部署</strong>：提供 <code>deploy.sh</code> 脚本和 Docker Compose 方案，从零到可用环境，10 分钟内即可跑起来。</li>
-</ul>
-<hr>
-<h2>🆚 竞品对比</h2>
-<p>auto_reg 是一个三代迭代项目，其演进路径本身就反映了同类工具的发展方向。下面将三代项目进行对比：</p>
-<table>
-<thead>
-<tr>
-<th>特性</th>
-<th><strong>auto_reg (3rd Gen)</strong></th>
-<th><strong>any-auto-register (1st Gen)</strong></th>
-<th><strong>any-auto-register (2nd Gen)</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>项目地址</td>
-<td>dsclca12/auto_reg</td>
-<td>lxf746/any-auto-register</td>
-<td>zc-zhangchen/any-auto-register</td>
-</tr>
-<tr>
-<td>Web UI</td>
-<td>✅ React + Ant Design</td>
-<td>❌</td>
-<td>❌</td>
-</tr>
-<tr>
-<td>插件架构</td>
-<td>✅ 标准化接口</td>
-<td>❌</td>
-<td>❌</td>
-</tr>
-<tr>
-<td>浏览器引擎</td>
-<td>Playwright + Camoufox</td>
-<td>未明确</td>
-<td>未明确</td>
-</tr>
-<tr>
-<td>邮箱服务数量</td>
-<td>10+</td>
-<td>较少</td>
-<td>较少</td>
-</tr>
-<tr>
-<td>验证码处理</td>
-<td>YesCaptcha + Turnstile Solver</td>
-<td>基础</td>
-<td>基础</td>
-</tr>
-<tr>
-<td>批量注册上限</td>
-<td>1000 账号</td>
-<td>未明确</td>
-<td>未明确</td>
-</tr>
-<tr>
-<td>定时任务</td>
-<td>✅ APScheduler</td>
-<td>❌</td>
-<td>❌</td>
-</tr>
-<tr>
-<td>Docker 部署</td>
-<td>✅</td>
-<td>❌</td>
-<td>❌</td>
-</tr>
-<tr>
-<td>代理池管理</td>
-<td>✅</td>
-<td>❌</td>
-<td>❌</td>
-</tr>
-<tr>
-<td>文档完善度</td>
-<td>完整（中英文双语）</td>
-<td>基础</td>
-<td>中等</td>
-</tr>
-</tbody></table>
-<blockquote>
-<p><strong>总结</strong>：auto_reg 在前两代基础上实现了质的飞跃——从命令行工具升级为完整的 Web 应用，从单平台支持扩展到多平台插件化架构，是当前该领域功能最完善的方案之一。</p>
-</blockquote>
-<hr>
-<h2>🚀 快速上手</h2>
-<h3>环境要求</h3>
-<table>
-<thead>
-<tr>
-<th>组件</th>
-<th>最低版本</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Python</td>
-<td>3.12+</td>
-<td>推荐使用 Conda 管理环境</td>
-</tr>
-<tr>
-<td>Node.js</td>
-<td>18+</td>
-<td>用于前端构建</td>
-</tr>
-<tr>
-<td>Git</td>
-<td>任意</td>
-<td>克隆仓库</td>
-</tr>
-<tr>
-<td>Docker</td>
-<td>可选</td>
-<td>一键部署方案</td>
-</tr>
-</tbody></table>
-<h3>方法一：一键部署（推荐）</h3>
-<pre><code class="language-bash"># 1. 克隆仓库
-git clone https://github.com/dsclca12/auto_reg.git
-cd auto_reg
-
-# 2. 赋予部署脚本执行权限（Linux/Mac）
-chmod +x deploy.sh
-
-# 3. 运行一键部署脚本
-./deploy.sh
-</code></pre>
-<p>部署完成后，浏览器访问 <code>http://localhost:8000</code> 即可看到管理界面。</p>
-<h3>方法二：手动安装</h3>
-<pre><code class="language-bash"># 1. 克隆仓库并进入项目目录
-git clone https://github.com/dsclca12/auto_reg.git
-cd auto_reg
-
-# 2. 创建 Python 虚拟环境（推荐使用 Conda）
-conda create -n any-auto-register python=3.12 -y
-conda activate any-auto-register
-
-# 3. 安装 Python 依赖
-pip install -r requirements.txt
-
-# 4. 安装浏览器驱动（Playwright 控制的 Chromium）
-python -m playwright install chromium
-
-# 5. 下载 Camoufox（反检测浏览器指纹工具）
-python -m camoufox fetch
-
-# 6. 安装前端依赖并构建
-cd frontend
-npm install
-npm run build
-cd ..
-
-# 7. 复制环境变量配置文件并编辑
-cp .env.example .env
-# 在 .env 中填入你的邮箱 API Key、代理等配置
-
-# 8. 启动服务
-python main.py
-</code></pre>
-<blockquote>
-<p>启动成功后同样访问 <code>http://localhost:8000</code>。</p>
-</blockquote>
-<h3>基本使用流程</h3>
+<h2>🎯 核心观点</h2>
 <ol>
-<li><strong>配置邮箱服务</strong>：在 <code>.env</code> 中填写邮箱服务的 API Key（如 MoeMail、SkyMail 等），不同平台对邮箱要求不同，参考 README 中的邮箱方案表选择合适的策略。</li>
-<li><strong>配置验证码服务</strong>：如果你选择使用 YesCaptcha，在 <code>.env</code> 中填入 <code>YESCAPTCHA_CLIENT_KEY</code>；如果使用本地 Turnstile Solver，设置 <code>LOCAL_SOLVER_URL</code>。</li>
-<li><strong>配置代理（可选）</strong>：设置 <code>PROXY_URL</code> 以提高注册成功率。</li>
-<li><strong>在 Web 界面中选择目标平台</strong>，填写注册参数，点击开始。</li>
-<li><strong>查看注册结果</strong>：在管理界面中查看每个账号的注册状态、Token 信息等。</li>
+<li><p><strong>&quot;写 HTML，出视频&quot;——HyperFrames 把视频生产变成了前端开发问题。</strong> 这意味着只要你会描述需求，AI 就能自动生成可渲染的代码，不再需要手动操作视频剪辑软件的时间线。</p>
+</li>
+<li><p><strong>对话式迭代是 WorkBuddy 相比传统 AI 工具的核心优势。</strong> 不同于 Codex、Claude Code 这类单轮执行工具，WorkBuddy 允许你在 Craft 模式下直接修改当前文件，追加细节不需要重复上下文，体验更接近&quot;边聊边改&quot;。</p>
+</li>
+<li><p><strong>选对工作流（Workflow）是第一步也是关键一步。</strong> HyperFrames 提供了 9 种创作工作流，按场景匹配——科普解说选 <code>/faceless-explainer</code>，产品发布选 <code>/product-launch-video</code>，选错类型后面调效果事倍功半。</p>
+</li>
+<li><p><strong>国内使用需注意两个隐性成本：网络和积分。</strong> TTS（Text-to-Speech，文本转语音）推荐用 edge-tts 而非默认的 Kokoro 模型（后者托管海外，国内下载容易超时）；WorkBuddy 每月赠 500 积分，连续生产需控制用量。</p>
+</li>
+<li><p><strong>适合的场景有限，别神化。</strong> 目前产出的视频以文字、图表、2D 动画为主，适合数据展示和概念解说，不适合需要真人出镜或复杂特效的场景。</p>
+</li>
 </ol>
 <hr>
-<h2>💡 使用建议</h2>
-<h3>✅ 什么时候推荐使用</h3>
+<h2>💡 深度解读</h2>
+<h3>HyperFrames 到底是什么？</h3>
+<p>HyperFrames 是 <strong>HeyGen</strong>（一家做 AI 视频生成的公司）开源的框架。它的核心理念是用 HTML + CSS 来描述视频画面，用 JavaScript 控制动画时序，最终通过渲染引擎输出标准 MP4 文件。</p>
+<p>为什么用 HTML？因为前端开发者生态极其成熟——布局、动画、过渡效果、响应式设计，都有现成的解决方案。HyperFrames 把这些能力打包成一套&quot;视频专属的渲染规则&quot;，让 LLM（Large Language Model，大语言模型）生成的 HTML 能被正确解析并渲染成视频帧。</p>
+<p>简单类比：<strong>传统剪辑软件 = Photoshop 画图层；HyperFrames = 用 HTML/CSS 画帧，然后一键打包成视频。</strong></p>
+<h3>WorkBuddy 的定位：不是通用聊天机器人，而是&quot;视频创作 IDE&quot;</h3>
+<p>WorkBuddy 是腾讯推出的 AI 桌面助手，但在这篇文章里，它的角色更像是一个<strong>带有代码执行能力的对话式开发环境</strong>。</p>
+<p>它的关键能力：</p>
 <ul>
-<li>你有<strong>明确的批量注册需求</strong>（如团队多账号管理、AI 平台压力测试）。</li>
-<li>你需要<strong>技术学习和研究</strong>自动化注册流程、风控对抗等话题。</li>
-<li>你愿意投入时间<strong>配置邮箱和验证码服务</strong>，因为这些是注册成功的关键变量。</li>
+<li><strong>项目感知</strong>：能感知当前目录结构，知道自己在哪个项目里</li>
+<li><strong>文件读写</strong>：可以直接创建、修改 HTML 文件</li>
+<li><strong>命令执行</strong>：在终端里跑 <code>npx hyperframes preview</code> 或 <code>npx hyperframes render</code></li>
+<li><strong>Craft 模式</strong>：允许你直接编辑当前打开的文件，而不是每次都重新生成</li>
 </ul>
-<h3>⚠️ 什么时候不适合使用</h3>
+<p>这和传统 AI 工具（如 ChatGPT）最大的区别在于——<strong>状态保持</strong>。你不需要每次把完整需求重新说一遍，而是像和同事协作一样，逐步完善同一个项目。</p>
+<h3>配音方案的选择逻辑</h3>
+<p>文章里做了一个很有意思的技术决策：<strong>放弃 HyperFrames Skills 默认的 Kokoro 模型，改用 edge-tts</strong>。</p>
+<table>
+<thead>
+<tr>
+<th>方案</th>
+<th>优势</th>
+<th>劣势</th>
+<th>适合场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Kokoro（默认）</td>
+<td>模型质量高、音色丰富</td>
+<td>模型文件托管海外，国内下载容易超时</td>
+<td>网络环境好的用户</td>
+</tr>
+<tr>
+<td>edge-tts（微软 API）</td>
+<td>免费、无需下载模型、国内网络稳定</td>
+<td>音色选择较少</td>
+<td>国内用户快速出片</td>
+</tr>
+</tbody></table>
+<p>这个选择背后的逻辑很清晰：<strong>在原型验证阶段，稳定性 &gt; 画质。</strong> edge-tts 返回每个字的时间戳（timestamp），WorkBuddy 可以直接把这些时间戳映射到 HTML 的 <code>data-start</code> 和 <code>data-duration</code> 属性上，实现字幕与语音的精确同步——这比手动对齐字幕高效得多。</p>
+<h3>9 种工作流的场景映射</h3>
+<table>
+<thead>
+<tr>
+<th>工作流</th>
+<th>典型场景</th>
+<th>关键特征</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/faceless-explainer</code></td>
+<td>科普解说、知识科普</td>
+<td>纯视觉生成，不需要真人</td>
+</tr>
+<tr>
+<td><code>/product-launch-video</code></td>
+<td>产品发布、宣传片</td>
+<td>偏营销风格</td>
+</tr>
+<tr>
+<td><code>/motion-graphics</code></td>
+<td>短动效（10 秒内）</td>
+<td>强视觉冲击力</td>
+</tr>
+<tr>
+<td><code>/pr-to-video</code></td>
+<td>代码 PR 走查</td>
+<td>程序员向</td>
+</tr>
+<tr>
+<td><code>/talking-head-recut</code></td>
+<td>真人视频叠加图形</td>
+<td>需要原始真人素材</td>
+</tr>
+<tr>
+<td><code>/music-to-video</code></td>
+<td>节拍同步视频</td>
+<td>音乐驱动</td>
+</tr>
+<tr>
+<td><code>/slideshow</code></td>
+<td>演示文稿/交互 Deck</td>
+<td>幻灯片式结构</td>
+</tr>
+<tr>
+<td><code>/embedded-captions</code></td>
+<td>字幕叠加</td>
+<td>已有视频加字幕</td>
+</tr>
+<tr>
+<td><code>/general-video</code></td>
+<td>万能兜底</td>
+<td>其他类型都适用</td>
+</tr>
+</tbody></table>
+<h3>工作流的限制与边界</h3>
+<p>当前这套方案有几个明确的边界，读者需要了解：</p>
+<ol>
+<li><p><strong>Mac 用户渲染需另开终端</strong>：WorkBuddy 的代码执行目前只支持 Windows。Mac 用户可以在 WorkBuddy 里预览和修改 HTML，但最终渲染命令（<code>npx hyperframes render</code>）需要在独立终端中手动执行。</p>
+</li>
+<li><p><strong>多轮对话后上下文可能丢失</strong>：超过三轮迭代后，WorkBuddy 有可能遗忘前面设定的关键约束（比如&quot;深色背景&quot;可能被写成浅色）。应对策略很简单：在关键修改的 Prompt 里重复一遍核心要求。</p>
+</li>
+<li><p><strong><code>/hyperframes</code> 斜杠命令偶尔不触发</strong>：WorkBuddy 的 AI 偶尔会把这个斜杠命令当普通文本处理。解决方法是手动再输一次，或者直接写&quot;用 HyperFrames Skills 执行以下任务&quot;。</p>
+</li>
+<li><p><strong>预览时标签不可点击</strong>：在浏览器预览阶段，某些交互元素可能无法真正响应，这属于渲染环境的限制，不影响最终输出。</p>
+</li>
+</ol>
+<hr>
+<h2>🚀 如何实践</h2>
+<h3>第一步：装好三样东西</h3>
+<pre><code class="language-bash"># 1. 确认 Node.js 版本（22 以上）
+node --version
+
+# 2. 安装 FFmpeg（视频编码工具）
+# macOS
+brew install ffmpeg
+# Windows（推荐 winget）
+winget install ffmpeg
+
+# 3. 安装 HyperFrames Skills 到你的项目
+cd your-project-folder
+npx skills add heygen-com/hyperframes --full-depth
+</code></pre>
+<h3>第二步：下载并配置 WorkBuddy</h3>
 <ul>
-<li>你只是<strong>偶尔注册一两个账号</strong>——手动注册可能更简单直接。</li>
-<li>你希望<strong>100% 注册成功</strong>——任何自动化工具都无法绕过平台的风控策略，Kiro 等平台对邮箱要求极其严格。</li>
-<li>你打算用于<strong>商业批量注册或恶意用途</strong>——项目明确声明仅供学习研究，且可能违反平台使用条款。</li>
+<li>官网下载 Windows 或 Mac 版</li>
+<li>双击安装，用腾讯账号登录</li>
+<li>打开后切换到项目目录，输入 <code>/hyperframes</code></li>
+<li>看到路由器菜单列出创作工作流，说明安装成功</li>
 </ul>
-<h3>👥 适合人群</h3>
+<h3>第三步：选工作流 + 一句话生成初版</h3>
+<p>在 WorkBuddy 对话框里输入：</p>
+<pre><code>用 /faceless-explainer 做一个 30 秒的科普短视频。
+16:9 横屏，深色背景。
+内容：AI 发展的三个阶段——规则系统、机器学习、大模型时代，
+每个阶段一个场景，展示核心特点和代表事件。
+风格偏科技感，简洁。
+</code></pre>
+<p>WorkBuddy 会自动创建项目骨架，把内容拆成场景，生成 HTML 文件，并启动预览。</p>
+<h3>第四步：对话式迭代（核心！）</h3>
+<p>初版出来后面向的问题，通常可以这样追加修改：</p>
+<pre><code>加动画：每个阶段的标题加从下往上滑入的效果，带回弹。
+三个阶段依次出现，间隔 0.5 秒。场景之间加闪白转场。
+</code></pre>
+<pre><code>追加细节：代表事件加上具体年份——规则系统 1980s，机器学习 2012，大模型时代 2023。
+</code></pre>
+<pre><code>加配音和字幕：用 edge-tts 生成中文旁白，语速稍快。
+旁白内容根据画面生成，控制在 30 秒以内。
+</code></pre>
+<h3>第五步：最终渲染</h3>
+<pre><code class="language-bash">npx hyperframes render
+</code></pre>
+<p>输出 MP4 文件，完成。</p>
+<h3>省积分技巧</h3>
 <ul>
-<li><strong>AI 开发者</strong>：需要多个 ChatGPT / Cursor 账号进行不同项目测试的开发者。</li>
-<li><strong>安全研究人员</strong>：希望研究平台注册风控机制的从业者。</li>
-<li><strong>自动化爱好者</strong>：对浏览器自动化（Playwright）、反检测技术（Camoufox）感兴趣的动手玩家。</li>
-<li><strong>开源贡献者</strong>：愿意参与插件开发、扩展新平台支持的技术贡献者。</li>
+<li>先用 Ask 模式讨论方案（不消耗积分），确认后再切 Craft 模式执行</li>
+<li>一条 30 秒视频的积分消耗在 500 积分额度范围内，连续做多条需要控制用量</li>
 </ul>
 <hr>
-<h2>🔗 相关链接</h2>
-<ul>
-<li><strong>GitHub 仓库</strong>：<a href="https://github.com/dsclca12/auto_reg">https://github.com/dsclca12/auto_reg</a></li>
-<li><strong>原始项目（1st Gen）</strong>：<a href="https://github.com/lxf746/any-auto-register">https://github.com/lxf746/any-auto-register</a></li>
-<li><strong>二代 Fork</strong>：<a href="https://github.com/zc-zhangchen/any-auto-register">https://github.com/zc-zhangchen/any-auto-register</a></li>
-<li><strong>临时邮件参考项目</strong>：<a href="https://github.com/dreamhunter2333/cloudflare_temp_email">https://github.com/dreamhunter2333/cloudflare_temp_email</a></li>
-<li><strong>项目 README（英文）</strong>：<a href="https://github.com/dsclca12/auto_reg/blob/main/README.md">https://github.com/dsclca12/auto_reg/blob/main/README.md</a></li>
-<li><strong>项目 README（中文）</strong>：<a href="https://github.com/dsclca12/auto_reg/blob/main/README_CN.md">https://github.com/dsclca12/auto_reg/blob/main/README_CN.md</a></li>
-</ul>
+<h2>💭 总结与推荐</h2>
+<p>这篇文章的价值在于，它把一条原本需要学习专业剪辑软件的<strong>视频生产流水线</strong>，压缩成了&quot;对话 + 迭代&quot;的自然语言交互。对于<strong>科普创作者、教育内容生产者、技术布道者</strong>来说，这是一个极低门槛的起步方案——你只需要能说清楚&quot;我想做什么&quot;，就能得到一段可发布的视频。</p>
+<p>但也要清醒认识：它目前更适合<strong>图文为主、节奏轻快的解说类内容</strong>，而非需要复杂叙事、专业调色或真人出镜的影视级作品。如果你属于&quot;有内容想法但不想花两周学剪辑&quot;的群体，这套组合值得立刻试一次。</p>
 <hr>
 <blockquote>
-<p>⚠️ <strong>免责声明</strong>：本项目仅供学习与技术研究使用。使用者需自行承担因使用本项目产生的所有法律风险和平台后果。作者不对任何因滥用本项目导致的损失负责。请确保你的使用行为符合当地法律法规和各平台的服务条款。</p>
+<p><strong>原文链接</strong>：<a href="https://mp.weixin.qq.com/s/-xcXrc7MY52hj3k7XcXfFQ">https://mp.weixin.qq.com/s/-xcXrc7MY52hj3k7XcXfFQ</a></p>
 </blockquote>
 
 </body>
