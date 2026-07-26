@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>🔥 ECC — The agent harness performance </title>
+<title>🔥 tensorflow — An Open Source Machine Learnin</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; background: #fff; color: #222; line-height: 1.8; }
   h1 { font-size: 24px; border-bottom: 2px solid #0366d6; padding-bottom: 10px; }
@@ -23,192 +23,216 @@
 </head>
 <body>
 <a href="../index.html" class="back">← 返回首页</a>
-<h1>ECC：给你的 AI 编码助手装上&quot;操作系统&quot;</h1>
-<p><img src="https://raw.githubusercontent.com/affaan-m/ECC/main/assets/hero.png" alt="ECC — the agent harness operating system"></p>
+<h1>TensorFlow：机器学习领域的&quot;水电煤&quot;，为什么它能统治开源 ML 十年？</h1>
+<blockquote>
+<p>196,548 Stars · 75,593 Forks · 由 Google Brain 团队打造的开源机器学习框架</p>
+</blockquote>
+<p><img src="https://www.tensorflow.org/images/tf_logo_horizontal.png" alt="TensorFlow Logo"></p>
 <hr>
 <h2>📌 项目是什么</h2>
-<p>你有没有遇到过这样的场景——用 Claude Code 写了一段代码，切换到 Cursor 又得重新适应它的规则；你在 Codex 里配置好的 prompt 最佳实践，到了 OpenCode 又全部作废。每个 AI 编码助手（harness）都有自己的&quot;脾气&quot;，你需要不断重复劳动来&quot;驯服&quot;它们。<strong>ECC 就是来解决这个问题的。</strong></p>
-<p>ECC 是一个面向 AI Agent 的<strong>性能优化系统（Harness Performance Optimization System）</strong>。它本质上是为各种 AI 编码助手量身定制的&quot;操作系统层&quot;——在 Claude Code、Codex、Cursor、OpenCode、Gemini、Zed、GitHub Copilot 等多个 harness 之上，提供统一的能力抽象：包括<strong>技能（Skills）</strong>、<strong>直觉（Instincts）</strong>、<strong>记忆优化</strong>、<strong>安全扫描</strong>和<strong>研究导向的开发工作流</strong>。作者 affaan-m 在过去 10+ 个月里高强度使用这些工具构建真实产品，将经验沉淀成了这个系统。截至发稿，它已获得超过 <strong>23 万 Star</strong>，是一个现象级的开源项目。</p>
-<p>简单来说，ECC 让你写一次配置，就能在所有 AI 助手上生效——它把&quot;人适应工具&quot;的过程翻转成了&quot;工具适应人&quot;。</p>
+<p>如果你做过任何与人工智能相关的事情，大概率听过这个名字——<strong>TensorFlow（张量流）</strong>。简单来说，它是一个<strong>端到端的开源机器学习平台（end-to-end open source platform for machine learning）</strong>，由 Google Brain 团队于 2015 年发起并开源，如今是全球最成熟的机器学习框架之一。</p>
+<p>为什么你需要一个这样的工具？想象一下：你想让计算机从海量图片中学会识别猫狗，或者让模型阅读文本并生成摘要。这些任务的核心是<strong>让计算机从数据中自动学习规律</strong>，但底层的数学运算——矩阵乘法、梯度计算、反向传播——极其复杂且容易出错。TensorFlow 就是那个帮你把这些&quot;脏活累活&quot;自动完成的引擎：你只需要定义<strong>模型结构（model architecture）</strong>，它就自动搞定求导、优化和并行计算。</p>
+<p>更厉害的是，TensorFlow 不仅服务于研究者，更面向工程落地。从手机端的轻量推理到跨数千张 GPU 的分布式训练，它提供了一整套工具链——包括模型构建（<code>tf.keras</code>）、数据预处理（<code>tf.data</code>）、服务部署（<code>TensorFlow Serving</code>）和移动端推理（<code>TensorFlow Lite</code>）。</p>
+<p><img src="https://img.shields.io/pypi/pyversions/tensorflow.svg" alt="Python">
+<img src="https://badge.fury.io/py/tensorflow.svg" alt="PyPI">
+<img src="https://zenodo.org/badge/DOI/10.5281/zenodo.4724125.svg" alt="DOI">
+<img src="https://bestpractices.coreinfrastructure.org/projects/1486/badge" alt="CII Best Practices">
+<img src="https://api.securityscorecards.dev/projects/github.com/tensorflow/tensorflow/badge" alt="OpenSSF Scorecard"></p>
 <hr>
 <h2>🎯 适用场景</h2>
 <ul>
-<li><strong>多工具并行开发</strong>：团队里有人用 Claude Code、有人用 Cursor、有人用 Codex，ECC 提供统一的 skills 和 rules，告别&quot;每个工具一套配置&quot;的混乱。</li>
-<li><strong>企业级 AI 编码安全合规</strong>：ECC 内置安全扫描和策略执行，适合需要确保 AI 生成代码不触碰敏感数据、符合内部规范的场景。</li>
-<li><strong>长期项目的知识沉淀</strong>：ECC 的记忆优化和持续学习机制，能把项目上下文、架构决策沉淀下来，让 AI 在后续会话中&quot;记住&quot;之前的讨论。</li>
-<li><strong>快速启动新项目</strong>：通过预设的 skills 和 hooks，新项目可以一键获得经过验证的开发工作流，不需要从零配置。</li>
-<li><strong>MCP（Model Context Protocol）生态整合</strong>：ECC 帮你管理 MCP 服务器的配置，让 AI 助手无缝对接外部工具和数据源。</li>
+<li><strong>深度学习模型训练与研发</strong>：无论是卷积神经网络（CNN）做图像分类，还是 Transformer 架构做自然语言处理，TensorFlow 都提供了完整的实验与训练 pipeline。</li>
+<li><strong>生产环境模型部署</strong>：通过 <code>TensorFlow Serving</code> 或 <code>TensorFlow.js</code>，你可以将训练好的模型一键部署到服务器、浏览器甚至 IoT 设备上。</li>
+<li><strong>移动端与边缘计算</strong>：使用 <code>TensorFlow Lite</code>，在 Android/iOS 设备或嵌入式硬件（如树莓派）上运行推理，延迟低、功耗小。</li>
+<li><strong>大规模分布式训练</strong>：借助 <code>tf.distribute.Strategy</code>，轻松将训练任务扩展到多台机器、数百张 GPU 上，加速数倍的模型迭代。</li>
+<li><strong>数据流水线构建</strong>：用 <code>tf.data</code> API 构建高效、可复现的数据加载与预处理管道，支持并行读取、缓存、打乱和批处理。</li>
 </ul>
 <hr>
 <h2>✨ 核心特性</h2>
-<ol>
-<li><strong>跨 Harness 统一层</strong>：一套配置同时适配 Claude Code、Codex、Cursor、OpenCode 等 7+ 个 AI 编码助手，不再为每个工具单独维护规则。</li>
-<li><strong>Skills 系统</strong>：可复用的技能模块，涵盖代码审查、调试、架构设计等常见任务，像插件一样即插即用。</li>
-<li><strong>Instincts（直觉层）</strong>：基于项目上下文自动推断最佳实践，让 AI 在写代码时&quot;自带经验&quot;，减少反复试错。</li>
-<li><strong>Memory Optimization</strong>：智能管理会话记忆，避免 AI 在长对话中&quot;失忆&quot;，保持上下文一致性。</li>
-<li><strong>Security Scanning</strong>：集成安全扫描能力，在 AI 生成代码时实时检测潜在的安全漏洞和敏感信息泄露。</li>
-<li><strong>Research-First 开发</strong>：内置研究导向的工作流，先探索再实现，适合复杂需求和新技术调研场景。</li>
-<li><strong>Hermes Operator 架构</strong>（v2.0.0 新增）：提供公开的 Operator 故事层，让可复用的能力可以在不同 harness 间自由流转。</li>
-<li><strong>GitHub App 集成</strong>：通过官方的 GitHub App（ECC Tools）直接在 Pull Request 流程中执行 AI 增强工作流，无需手动配置。</li>
-</ol>
-<hr>
-<h2>🆚 竞品对比</h2>
 <table>
 <thead>
 <tr>
 <th>特性</th>
-<th><strong>ECC</strong></th>
-<th>Cursor <code>.cursorrules</code></th>
-<th>Claude Code 原生 Rules</th>
+<th>说明</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>跨 harness 支持</td>
-<td>✅ 7+ 个 harness 统一管理</td>
-<td>❌ 仅限 Cursor</td>
-<td>❌ 仅限 Claude Code</td>
+<td><strong>Keras 高级 API（tf.keras）</strong></td>
+<td>用几行代码就能搭建一个神经网络，对新手极其友好，同时不牺牲灵活性</td>
 </tr>
 <tr>
-<td>技能复用机制</td>
-<td>✅ 可复用 skills 模块</td>
-<td>❌ 手动复制粘贴</td>
-<td>❌ 手动复制粘贴</td>
+<td><strong>Eager Execution（即时执行模式）</strong></td>
+<td>默认采用命令式编程，代码像普通 Python 一样逐行执行，调试极其方便</td>
 </tr>
 <tr>
-<td>安全扫描</td>
-<td>✅ 内置</td>
-<td>❌ 无</td>
-<td>❌ 无</td>
+<td><strong>tf.data 数据管道</strong></td>
+<td>支持高效的数据加载、预处理和增强，完美适配大规模数据集的训练需求</td>
 </tr>
 <tr>
-<td>记忆/上下文管理</td>
-<td>✅ 优化长会话</td>
-<td>⚠️ 有限</td>
-<td>⚠️ 有限</td>
+<td><strong>跨平台部署（TF Lite / TF.js / TF Serving）</strong></td>
+<td>一套代码，模型可以跑在服务器、浏览器、手机和嵌入式设备上</td>
 </tr>
 <tr>
-<td>MCP 集成管理</td>
-<td>✅ 统一配置</td>
-<td>❌ 无</td>
-<td>❌ 无</td>
+<td><strong>自动微分（Automatic Differentiation）</strong></td>
+<td>框架自动计算梯度，你只需关心模型定义，反向传播交给它</td>
 </tr>
 <tr>
-<td>开源协议</td>
-<td>MIT</td>
-<td>闭源（Cursor 专有）</td>
-<td>闭源（Anthropic 专有）</td>
+<td><strong>XLA（Accelerated Linear Algebra）</strong></td>
+<td>通过编译优化加速计算图，在 CPU/GPU/TPU 上都能获得显著性能提升</td>
 </tr>
 <tr>
-<td>社区贡献者</td>
-<td>230+</td>
-<td>N/A</td>
-<td>N/A</td>
+<td><strong>TensorBoard 可视化</strong></td>
+<td>内置训练过程可视化工具，监控损失曲线、模型结构、权重分布一目了然</td>
+</tr>
+<tr>
+<td><strong>TPU 原生支持</strong></td>
+<td>深度集成 Google 的 TPU 硬件，在云端可以获得极高的训练吞吐</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>🆚 竞品对比</h2>
+<p>TensorFlow 并不是机器学习框架的独苗。下面是它与当前主流框架的对比：</p>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>TensorFlow</th>
+<th>PyTorch</th>
+<th>JAX</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>上手难度</strong></td>
+<td>中等（Keras 简化了流程）</td>
+<td>低（Pythonic 风格更自然）</td>
+<td>较高（需要理解函数式编程）</td>
+</tr>
+<tr>
+<td><strong>生产部署</strong></td>
+<td>⭐⭐⭐⭐⭐（Serving / Lite / JS 生态完整）</td>
+<td>⭐⭐⭐（TorchServe 较年轻）</td>
+<td>⭐⭐（生态仍在发展中）</td>
+</tr>
+<tr>
+<td><strong>研究友好度</strong></td>
+<td>⭐⭐⭐（Eager 模式改善后提升）</td>
+<td>⭐⭐⭐⭐⭐（研究者首选）</td>
+<td>⭐⭐⭐⭐⭐（Google 内部主力）</td>
+</tr>
+<tr>
+<td><strong>分布式训练</strong></td>
+<td>成熟（Parameter Server / Mesh）</td>
+<td>成熟（DistributedDataParallel）</td>
+<td>强大（pjit / spmd）</td>
+</tr>
+<tr>
+<td><strong>移动端/边缘</strong></td>
+<td>⭐⭐⭐⭐⭐（TF Lite 非常成熟）</td>
+<td>⭐⭐（PyTorch Mobile 仍在追赶）</td>
+<td>⭐（几乎不支持）</td>
+</tr>
+<tr>
+<td><strong>社区规模</strong></td>
+<td>极大（196k+ stars）</td>
+<td>极大（80k+ stars）</td>
+<td>快速增长中</td>
+</tr>
+<tr>
+<td><strong>硬件加速</strong></td>
+<td>CPU / GPU / TPU / Edge TPU</td>
+<td>CPU / GPU / MPS (Apple)</td>
+<td>CPU / GPU / TPU</td>
+</tr>
+<tr>
+<td><strong>许可证</strong></td>
+<td>Apache-2.0</td>
+<td>BSD</td>
+<td>Apache-2.0</td>
 </tr>
 </tbody></table>
 <blockquote>
-<p><strong>小结</strong>：ECC 的核心差异化在于&quot;跨平台&quot;和&quot;系统化&quot;。Cursor 和 Claude Code 各自有自己的规则系统，但它们是孤岛。ECC 把这些孤岛连接起来，形成统一的工作流。</p>
+<p><strong>一句话总结</strong>：如果你追求<strong>研究灵活性</strong>，PyTorch 是首选；如果你需要<strong>从实验到生产的全链路</strong>，TensorFlow 的优势无可替代；如果你做<strong>高性能数值计算与自动微分研究</strong>，JAX 正在崛起。</p>
 </blockquote>
 <hr>
 <h2>🚀 快速上手</h2>
-<h3>第一步：安装 ECC Universal（核心包）</h3>
-<pre><code class="language-bash"># 通过 npm 安装 ECC Universal 包，这是跨 harness 的核心运行时
-npm install -g ecc-universal
-</code></pre>
-<p>或者使用 npx 临时运行：</p>
-<pre><code class="language-bash"># 无需安装，直接运行（适合一次性任务）
-npx ecc-universal init
-</code></pre>
-<h3>第二步：初始化项目配置</h3>
-<pre><code class="language-bash"># 在项目根目录运行，生成 .ecc/ 目录和默认配置
-ecc init
-</code></pre>
-<p>执行后，项目结构会变成这样：</p>
-<pre><code>your-project/
-├── .ecc/
-│   ├── skills/        # 技能模块目录
-│   ├── rules/         # 跨 harness 规则文件
-│   ├── memory/        # 记忆与上下文存储
-│   └── config.yaml    # ECC 主配置
-├── .cursorrules       # 自动生成的 Cursor 规则
-├── .claude/           # 自动生成的 Claude Code 配置
-└── ...
-</code></pre>
-<h3>第三步：选择你的 Harness 并启用对应插件</h3>
-<pre><code class="language-bash"># 如果你使用 Claude Code
-ecc enable claude-code
+<h3>第一步：安装</h3>
+<p>最简单的安装方式是通过 <code>pip</code>，一条命令搞定：</p>
+<pre><code class="language-bash"># 安装包含 GPU 支持的正式版（Ubuntu / Windows，需已安装 CUDA）
+pip install tensorflow
 
-# 如果你使用 Cursor
-ecc enable cursor
+# 如果你只需要 CPU 版本（推荐 Mac 用户或不想装 CUDA 的用户）
+pip install tensorflow-cpu
 
-# 如果你使用 Codex
-ecc enable codex
-
-# 启用多个 harness（用空格分隔）
-ecc enable claude-code cursor codex
+# 想要尝鲜最新功能？安装 nightly 版本（不稳定但功能最新）
+pip install tf-nightly
 </code></pre>
-<h3>第四步：使用内置 Skills</h3>
-<pre><code class="language-bash"># 查看可用的技能列表
-ecc skills list
+<p><img src="https://img.shields.io/pypi/pyversions/tensorflow.svg" alt="Python">
+<img src="https://badge.fury.io/py/tensorflow.svg" alt="PyPI"></p>
+<h3>第二步：跑你的第一个程序</h3>
+<p>打开 Python 交互环境（终端输入 <code>python</code>），粘贴以下代码：</p>
+<pre><code class="language-python">&gt;&gt;&gt; import tensorflow as tf
 
-# 安装一个代码审查技能
-ecc skills install code-review
+# 基本张量运算：1 + 2
+&gt;&gt;&gt; tf.add(1, 2).numpy()
+3
 
-# 安装一个安全扫描技能
-ecc skills install security-scan
+# 创建一个字符串常量并打印
+&gt;&gt;&gt; hello = tf.constant(&#39;Hello, TensorFlow!&#39;)
+&gt;&gt;&gt; hello.numpy()
+b&#39;Hello, TensorFlow!&#39;
 </code></pre>
-<h3>第五步：验证安装</h3>
-<pre><code class="language-bash"># 运行自检，确认所有 harness 连接正常
-ecc doctor
-</code></pre>
-<p>输出示例：</p>
-<pre><code>✓ ecc-universal v2.0.0
-✓ Claude Code adapter: connected
-✓ Cursor adapter: connected
-✓ 3 skills loaded
-✓ Memory index: ready
-✓ Security scanner: active
-</code></pre>
-<h3>代码示例：在项目中添加自定义 Skill</h3>
-<p>在 <code>.ecc/skills/</code> 目录下创建一个自定义 skill：</p>
-<pre><code class="language-yaml"># .ecc/skills/my-api-best-practices.yaml
-name: api-best-practices
-description: 确保所有 API 端点遵循 RESTful 规范和项目内部约定
-version: &quot;1.0.0&quot;
+<p>看到输出 <code>3</code> 和 <code>b&#39;Hello, TensorFlow!&#39;</code>，恭喜你，TensorFlow 已经成功运行了！<code>.numpy()</code> 的作用是将 TensorFlow 的张量（<code>Tensor</code>，可理解为多维数组）转换为普通的 NumPy 数组，方便我们直接查看数值。</p>
+<h3>第三步：搭建一个最简单的神经网络</h3>
+<p>下面这个例子用 <code>tf.keras</code> 构建一个多层感知机（MLP），在 MNIST 手写数字数据集上做分类——这是深度学习领域的&quot;Hello World&quot;：</p>
+<pre><code class="language-python">import tensorflow as tf
 
-# 触发条件：当 AI 检测到路由/端点相关代码时自动激活
-triggers:
-  - pattern: &quot;router|endpoint|api|route&quot;
-    languages: [&quot;javascript&quot;, &quot;typescript&quot;, &quot;python&quot;]
+# ========== 1. 加载数据 ==========
+# MNIST 包含 60000 张 28x28 像素的手写数字灰度图（0-9）
+(x_train, y_train), (x_test, y_test) = tf.keras.datasets.mnist.load_data()
 
-# 要注入的系统提示（instructions）
-instructions: |
-  你正在为项目编写 API 代码。请遵循以下规范：
-  1. 使用 RESTful 命名约定（名词复数表示资源）
-  2. 状态码必须正确：200/201/204/400/401/403/404/500
-  3. 所有响应必须包含 `data` 字段包裹业务数据
-  4. 错误响应格式：{ &quot;error&quot;: { &quot;code&quot;: &quot;...&quot;, &quot;message&quot;: &quot;...&quot; } }
-  5. 必须包含输入参数校验
+# 归一化：将像素值从 [0, 255] 缩放到 [0, 1]，加速训练收敛
+x_train = x_train.reshape(-1, 28 * 28).astype(&#39;float32&#39;) / 255.0
+x_test = x_test.reshape(-1, 28 * 28).astype(&#39;float32&#39;) / 255.0
 
-# 关联的 MCP 工具（如果有的话）
-mcp_tools:
-  - name: api-tester
-    description: 调用本地 API 测试端点
+# ========== 2. 构建模型 ==========
+model = tf.keras.Sequential([
+    tf.keras.layers.Dense(128, activation=&#39;relu&#39;),  # 全连接层，128个神经元，ReLU激活
+    tf.keras.layers.Dropout(0.2),                    # Dropout 防止过拟合
+    tf.keras.layers.Dense(10, activation=&#39;softmax&#39;)   # 输出层，10个类别（0-9），softmax 概率输出
+])
+
+# ========== 3. 编译 ==========
+model.compile(
+    optimizer=&#39;adam&#39;,              # Adam 优化器，自适应学习率
+    loss=&#39;sparse_categorical_crossentropy&#39;,  # 多分类交叉熵损失
+    metrics=[&#39;accuracy&#39;]           # 监控准确率
+)
+
+# ========== 4. 训练 ==========
+model.fit(x_train, y_train, epochs=5, batch_size=32, validation_split=0.1)
+
+# ========== 5. 评估 ==========
+test_loss, test_acc = model.evaluate(x_test, y_test)
+print(f&#39;\n测试集准确率: {test_acc:.4f}&#39;)
+# 通常能达到 97%+ 的准确率！
 </code></pre>
-<p>启用后，每次 AI 助手检测到路由相关代码时，就会自动应用这些规范。</p>
+<blockquote>
+<p>💡 提示：以上代码在普通 CPU 上训练 5 个 epoch 约需 1-2 分钟。如果装了 GPU，速度会更快。</p>
+</blockquote>
 <hr>
 <h2>💡 使用建议</h2>
-<h3>✅ 什么时候用</h3>
+<h3>✅ 什么时候用 TensorFlow？</h3>
 <ul>
-<li><strong>同时使用多个 AI 编码助手</strong>：如果你在 Claude Code 和 Cursor 之间切换，ECC 能让你的配置一次编写、多处生效。</li>
-<li><strong>团队协作项目</strong>：把 <code>.ecc/</code> 目录纳入版本控制，团队成员共享同一套 AI 工作流规则，保证代码风格和质量的一致性。</li>
-<li><strong>长期维护的项目</strong>：ECC 的记忆优化和持续学习机制，能避免 AI 在每次新会话中&quot;从零开始&quot;。</li>
-<li><strong>需要安全合规的场景</strong>：内置安全扫描对金融、医疗、政务等对代码安全要求高的项目特别有价值。</li>
+<li><strong>你需要将模型从研究阶段推进到生产环境</strong>：TF Serving、TF Lite、TF.js 构成了完整的部署生态，覆盖云、端、流三大场景。</li>
+<li><strong>你的团队已经深度使用 Google 生态</strong>：如果你们用 GCP（Google Cloud Platform），TF 与 Vertex AI、Cloud TPU 的集成是无缝的。</li>
+<li><strong>你需要 TPU 加速</strong>：Google 的 TPU 硬件目前对 TensorFlow 的支持最为成熟。</li>
+<li><strong>你在做大规模分布式训练</strong>：<code>tf.distribute</code> 策略支持从单机多卡到多机多卡的平滑扩展。</li>
 </ul>
-<h3>❌ 什么时候不用</h3>
+<h3>❌ 什么时候不用 TensorFlow？</h3>
 <ul>
-<li><strong>单人只用单一 AI 助手</strong>：如果你只用 Cursor 且已经熟悉它的规则系统，ECC 的跨平台能力对你来说可能是多余的。</li>
-<li><strong>极简项目/原型验证</strong>：对于几小时就能写完的小型脚本或 PoC，引入 ECC 的配置开销可能大于收益。</li>
-<li><strong>完全不需要 AI 辅助编码</strong>：如果你偏好纯手动编码，ECC 的价值几乎为零。</li>
+<li><strong>快速原型验证 / 学术研究</strong>：PyTorch 的动态图和调试体验更流畅，很多研究者更偏爱它。</li>
+<li><strong>团队全是 Python 原生开发者</strong>：TensorFlow 的学习曲线相对陡峭，概念（Graph / Session / Eager / tf.function）较多。</li>
+<li><strong>你需要最新的研究特性</strong>：PyTorch 在论文复现方面响应更快，生态中的创新库（如 Hugging Face Transformers）往往优先支持 PyTorch。</li>
 </ul>
 <h3>👥 适合人群</h3>
 <table>
@@ -216,49 +240,49 @@ mcp_tools:
 <tr>
 <th>人群</th>
 <th>推荐程度</th>
-<th>原因</th>
+<th>说明</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>全栈工程师（同时用多个 AI 工具）</td>
+<td><strong>机器学习工程师（ML Engineer）</strong></td>
 <td>⭐⭐⭐⭐⭐</td>
-<td>核心目标用户，跨 harness 统一配置</td>
+<td>生产部署的刚需</td>
 </tr>
 <tr>
-<td>技术团队负责人</td>
-<td>⭐⭐⭐⭐⭐</td>
-<td>统一团队 AI 工作流，保证产出质量一致</td>
-</tr>
-<tr>
-<td>开源项目维护者</td>
-<td>⭐⭐⭐⭐</td>
-<td>为贡献者提供标准化的 AI 辅助开发体验</td>
-</tr>
-<tr>
-<td>AI 编码爱好者/尝鲜者</td>
+<td><strong>深度学习研究者</strong></td>
 <td>⭐⭐⭐</td>
-<td>功能强大但有一定学习成本</td>
+<td>可用，但 PyTorch 可能更顺手</td>
 </tr>
 <tr>
-<td>纯手动开发者</td>
-<td>⭐</td>
-<td>不太需要</td>
+<td><strong>数据科学家（Data Scientist）</strong></td>
+<td>⭐⭐⭐⭐</td>
+<td>tf.keras 降低了入门门槛</td>
+</tr>
+<tr>
+<td><strong>移动端/嵌入式开发者</strong></td>
+<td>⭐⭐⭐⭐⭐</td>
+<td>TF Lite 是移动端推理的事实标准之一</td>
+</tr>
+<tr>
+<td><strong>初学者</strong></td>
+<td>⭐⭐⭐</td>
+<td>Keras API 友好，但整体概念体系较庞大</td>
 </tr>
 </tbody></table>
 <hr>
 <h2>🔗 相关链接</h2>
 <ul>
-<li><strong>GitHub 仓库</strong>：<a href="https://github.com/affaan-m/ECC">github.com/affaan-m/ECC</a></li>
-<li><strong>官方网站</strong>：<a href="https://ecc.tools">ecc.tools</a></li>
-<li><strong>社区 Discord</strong>：<a href="https://discord.gg/36yGMHGFbR">discord.gg/36yGMHGFbR</a></li>
-<li><strong>GitHub App（ECC Tools）</strong>：<a href="https://github.com/apps/ecc-tools">github.com/apps/ecc-tools</a></li>
-<li><strong>npm 包 - ecc-universal</strong>：<a href="https://www.npmjs.com/package/ecc-universal">npmjs.com/package/ecc-universal</a></li>
-<li><strong>npm 包 - ecc-agentshield</strong>：<a href="https://www.npmjs.com/package/ecc-agentshield">npmjs.com/package/ecc-agentshield</a></li>
-<li><strong>ECC Pro 定价</strong>：<a href="https://ecc.tools/pricing">ecc.tools/pricing</a></li>
-<li><strong>项目赞助</strong>：<a href="https://github.com/sponsors/affaan-m">github.com/sponsors/affaan-m</a></li>
+<li><strong>GitHub 仓库</strong>：<a href="https://github.com/tensorflow/tensorflow">https://github.com/tensorflow/tensorflow</a></li>
+<li><strong>官方网站与文档</strong>：<a href="https://www.tensorflow.org/">https://www.tensorflow.org/</a></li>
+<li><strong>API 参考文档</strong>：<a href="https://www.tensorflow.org/api_docs/">https://www.tensorflow.org/api_docs/</a></li>
+<li><strong>官方教程</strong>：<a href="https://www.tensorflow.org/tutorials/">https://www.tensorflow.org/tutorials/</a></li>
+<li><strong>社区讨论区（TensorFlow Forum）</strong>：<a href="https://discuss.tensorflow.org/">https://discuss.tensorflow.org/</a></li>
+<li><strong>Stack Overflow 标签</strong>：<a href="https://stackoverflow.com/questions/tagged/tensorflow">https://stackoverflow.com/questions/tagged/tensorflow</a></li>
+<li><strong>安装指南</strong>：<a href="https://www.tensorflow.org/install">https://www.tensorflow.org/install</a></li>
 </ul>
+<hr>
 <blockquote>
-<p><strong>注意</strong>：ECC 是 MIT 协议的开源项目，OSS 完全免费。ECC Pro 是面向私有仓库的托管 GitHub App，个人版从 $19/座/月起。开源社区和商业资助共同支撑着这个由单人维护但服务 23 万+ 用户的项目。</p>
+<p>📝 <strong>结语</strong>：TensorFlow 诞生至今已近十年，它从 Google 内部的实验工具成长为全球机器学习工程的基石。无论你是想训练一个简单的分类器，还是构建一个服务于亿级用户的推荐系统，TensorFlow 都能提供从实验到部署的完整路径。对于中文开发者来说，官方中文文档和社区资源丰富，上手并不困难——现在就开始你的第一个 <code>tf.add(1, 2)</code> 吧！</p>
 </blockquote>
 
 </body>
