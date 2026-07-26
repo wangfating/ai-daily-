@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>🔥 prompts.chat — f.k.a. Awesome ChatGPT Prompts</title>
+<title>🔥 auto_reg — codex全自动注册机</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; background: #fff; color: #222; line-height: 1.8; }
   h1 { font-size: 24px; border-bottom: 2px solid #0366d6; padding-bottom: 10px; }
@@ -23,246 +23,238 @@
 </head>
 <body>
 <a href="../index.html" class="back">← 返回首页</a>
-<h1>prompts.chat：全球最大的开源 AI 提示词库，一行命令私有化部署</h1>
-<blockquote>
-<p><strong>作者</strong>：f | <strong>GitHub Stars</strong>：166k+ | <strong>主要语言</strong>：TypeScript / Next.js | <strong>官网</strong>：<a href="https://prompts.chat">prompts.chat</a></p>
-</blockquote>
+<h1>auto_reg：让 AI 平台账号注册自动化——Any Auto Register 深度测评</h1>
 <hr>
 <h2>📌 项目是什么</h2>
-<p>你有没有过这样的经历？打开 ChatGPT，面对一个空白的输入框，大脑却一片空白——&quot;我到底该问它什么？&quot; 或者试了好几种说法，结果质量天差地别。<strong>提示词（Prompt）的质量，直接决定了 AI 输出结果的上限</strong>，这是目前 AI 使用者面临的最大痛点之一。</p>
-<p><strong>prompts.chat</strong> 就是为了解决这个问题而生的。它是目前全球最大的开源 AI 提示词库，聚合了来自社区的数万条高质量提示词，覆盖写作、编程、分析、角色扮演等多种场景。项目最初以 <code>Awesome ChatGPT Prompts</code> 之名在 2022 年 12 月发布，如今已更名并扩展为一个完整的提示词生态系统——不仅是一个&quot;列表&quot;，更提供了<strong>交互式学习手册、儿童提示词游戏、CLI 工具、MCP 服务器</strong>，以及最重要的——<strong>一键私有化部署</strong>能力，让组织可以在完全保留数据隐私的前提下使用这份prompt资源库。</p>
-<p>它的核心价值在于：<strong>把&quot;如何与 AI 对话&quot;这件事，从玄学变成工程</strong>。无论是个人用户想提升效率，还是企业想搭建内部 AI 工作流，prompts.chat 都提供了一个开箱即用的基础设施。</p>
+<p>在 AI 浪潮席卷全球的今天，ChatGPT、Cursor、Kiro、Grok 等 AI 平台已成为开发者和研究者的必备工具。然而，这些平台普遍存在注册门槛高、验证码复杂、邮箱验证繁琐等问题——尤其是当你有多个账号需求时（比如多环境测试、多用户管理、A/B 测试等），手动重复注册不仅耗时耗力，还容易因为操作过于频繁而被平台封禁 IP 或账号。</p>
+<p><strong>auto_reg（Any Auto Register）</strong> 正是为此而生。它是一个<strong>多平台账户自动注册与管理系统</strong>，覆盖了从 ChatGPT、Trae.ai、Cursor 到 Kiro、Grok 等多个热门 AI 平台。项目的核心价值在于：<strong>用自动化思维替代手工操作</strong>——内置浏览器引擎（Playwright + Camoufox）模拟真实用户行为，集成临时邮箱服务和验证码自动识别，配合 Web 管理界面，让&quot;一键注册&quot;从幻想变成现实。</p>
+<p><img src="https://api.star-history.com/svg?repos=dsclca12/auto_reg&type=Date" alt="Star History Chart"></p>
+<blockquote>
+<p>项目基于 lxf746 的 <code>any-auto-register</code> 进行了三代迭代更新，技术栈升级为 FastAPI + React，架构更清晰，扩展性更强。</p>
+</blockquote>
 <hr>
 <h2>🎯 适用场景</h2>
 <ul>
-<li><strong>AI 写作助手搭建</strong>：内容创作者、运营人员可以快速找到&quot;写文章&quot;&quot;改写文案&quot;&quot;生成摘要&quot;等场景化提示词，直接复制使用，省去反复调试的时间。</li>
-<li><strong>企业内部 AI 私有化部署</strong>：团队希望使用 ChatGPT、Claude、Gemini 等模型，但又不希望数据外泄——通过 self-host 部署私有提示词库，搭配自选模型接口，实现完全可控的 AI 工作流。</li>
-<li><strong>Prompt Engineering 学习</strong>：学生、开发者想系统学习&quot;如何写好提示词&quot;，可以通过项目内置的 25+ 章节交互式书籍（涵盖链式推理、Few-shot 学习、Agent 设计等进阶技巧）循序渐进。</li>
-<li><strong>教孩子与 AI 交互</strong>：内置的 &quot;Promi&quot; 儿童游戏通过趣味谜题和故事，教 8-14 岁的孩子理解如何向 AI 提问，培养下一代 AI 素养。</li>
-<li><strong>快速原型验证</strong>：开发者用 CLI 工具或 MCP Server 在本地开发环境中直接调用提示词库，快速测试不同 prompt 的效果。</li>
+<li><strong>AI 平台批量测试</strong>：开发者需要同时测试多个 ChatGPT / Cursor 账号的功能差异，auto_reg 可以快速批量生成账号，省去重复劳动。</li>
+<li><strong>研究与学习</strong>：安全研究人员或学生想了解不同 AI 平台的注册流程、风控机制，通过本项目可在合规范围内进行技术学习。</li>
+<li><strong>多账号环境管理</strong>：团队协作中需要为不同成员或项目准备独立账号，auto_reg 的批量注册和 Token 管理功能可以统一维护。</li>
+<li><strong>临时需求快速获取</strong>：只需要一个短期使用的 AI 账号，不想绑定真实邮箱，auto_reg 内置的临时邮箱方案可以快速搞定。</li>
+<li><strong>自动化工作流集成</strong>：通过 API 接口和定时任务功能，将账号注册融入 CI/CD 或其他自动化脚本中。</li>
 </ul>
 <hr>
 <h2>✨ 核心特性</h2>
-<ol>
-<li><strong>海量社区驱动的提示词库</strong>：数万条经过社区验证的 prompt，涵盖写作、编程、分析、翻译、营销等数十个类别，持续更新。</li>
-<li><strong>一键私有化部署（Self-Host）</strong>：通过 <code>npx prompts.chat new</code> 命令即可在本地或服务器上部署完整的提示词库，支持自定义品牌、主题、认证方式（GitHub/Google/Azure AD）和 PostgreSQL 数据库。</li>
-<li><strong>多模型兼容</strong>：不仅支持 ChatGPT，还兼容 Claude、Gemini、Llama、Mistral 等主流开源和闭源模型。</li>
-<li><strong>交互式提示词工程手册</strong>：25+ 章的免费在线书籍，从基础到进阶（链式推理 Chain-of-Thought、Few-shot、Agent 构建），适合零基础入门。</li>
-<li><strong>MCP Server 支持</strong>：以 Model Context Protocol 服务形式接入你的 AI 工具（如 Claude Code），让提示词库成为 AI 的&quot;外部知识插件&quot;。</li>
-<li><strong>CLI 工具</strong>：通过 <code>npx prompts.chat</code> 命令行直接调用，方便集成到自动化脚本和工作流中。</li>
-<li><strong>儿童友好模式（Promi）</strong>：游戏化设计，让孩子在玩乐中学会如何与 AI 有效沟通。</li>
-<li><strong>开源且可贡献</strong>：项目完全开源，任何人都可以通过 <a href="https://prompts.chat/prompts/new">prompts.chat/prompts/new</a> 提交新的提示词，自动同步到主仓库。</li>
-</ol>
+<ul>
+<li>🎯 <strong>多平台全覆盖</strong>：支持 ChatGPT、Trae.ai、Cursor、Kiro、Grok、Tavily、OpenBlockLabs 等主流 AI 平台，且功能完整度各不相同（部分平台支持 Token 管理和状态同步）。</li>
+<li>🔌 <strong>插件化架构</strong>：采用标准化接口设计，新增平台只需编写插件即可接入，无需改动核心代码。</li>
+<li>📧 <strong>丰富的邮箱方案</strong>：内置 LuckMail、MoeMail、TempMail.lol、SkyMail、DuckMail 等 10+ 种临时/自托管邮箱服务，适配不同平台的注册要求。</li>
+<li>🤖 <strong>双引擎验证码处理</strong>：集成 YesCaptcha（第三方打码平台）和本地 Turnstile Solver，兼顾成功率和隐私性。</li>
+<li>🌐 <strong>代理池管理</strong>：内置代理支持，配合随机延迟机制，有效降低被平台风控拦截的概率。</li>
+<li>📊 <strong>Web 管理界面</strong>：基于 React + Ant Design 构建的可视化面板，无需命令行即可完成所有操作。</li>
+<li>🔄 <strong>定时任务支持</strong>：支持周期性自动注册，配合批量上传功能，单次最多可处理 1000 个账号。</li>
+<li>🚀 <strong>一键部署</strong>：提供 <code>deploy.sh</code> 脚本和 Docker Compose 方案，从零到可用环境，10 分钟内即可跑起来。</li>
+</ul>
 <hr>
 <h2>🆚 竞品对比</h2>
+<p>auto_reg 是一个三代迭代项目，其演进路径本身就反映了同类工具的发展方向。下面将三代项目进行对比：</p>
 <table>
 <thead>
 <tr>
 <th>特性</th>
-<th align="center"><strong>prompts.chat</strong></th>
-<th align="center"><strong>Awesome ChatGPT Prompts</strong>（原始仓库）</th>
-<th align="center"><strong>PromptBase</strong></th>
-<th align="center"><strong>FlowGPT</strong></th>
+<th><strong>auto_reg (3rd Gen)</strong></th>
+<th><strong>any-auto-register (1st Gen)</strong></th>
+<th><strong>any-auto-register (2nd Gen)</strong></th>
 </tr>
 </thead>
 <tbody><tr>
-<td>开源许可</td>
-<td align="center">✅ 完全开源</td>
-<td align="center">✅ 完全开源</td>
-<td align="center">❌ 商业市场</td>
-<td align="center">❌ 封闭平台</td>
+<td>项目地址</td>
+<td>dsclca12/auto_reg</td>
+<td>lxf746/any-auto-register</td>
+<td>zc-zhangchen/any-auto-register</td>
 </tr>
 <tr>
-<td>社区贡献</td>
-<td align="center">✅ 在线提交</td>
-<td align="center">✅ GitHub PR</td>
-<td align="center">✅ 上传售卖</td>
-<td align="center">✅ 社区提交</td>
+<td>Web UI</td>
+<td>✅ React + Ant Design</td>
+<td>❌</td>
+<td>❌</td>
 </tr>
 <tr>
-<td>提示词数量</td>
-<td align="center">数万条</td>
-<td align="center">数千条</td>
-<td align="center">数千条（付费）</td>
-<td align="center">数十万条</td>
+<td>插件架构</td>
+<td>✅ 标准化接口</td>
+<td>❌</td>
+<td>❌</td>
 </tr>
 <tr>
-<td>私有化部署</td>
-<td align="center">✅ 一键 Self-Host</td>
-<td align="center">❌ 仅仓库</td>
-<td align="center">❌ SaaS 模式</td>
-<td align="center">❌ 仅网页</td>
+<td>浏览器引擎</td>
+<td>Playwright + Camoufox</td>
+<td>未明确</td>
+<td>未明确</td>
 </tr>
 <tr>
-<td>交互式学习手册</td>
-<td align="center">✅ 25+ 章节</td>
-<td align="center">❌ 无</td>
-<td align="center">❌ 无</td>
-<td align="center">❌ 无</td>
+<td>邮箱服务数量</td>
+<td>10+</td>
+<td>较少</td>
+<td>较少</td>
 </tr>
 <tr>
-<td>MCP Server 集成</td>
-<td align="center">✅ 内置</td>
-<td align="center">❌ 无</td>
-<td align="center">❌ 无</td>
-<td align="center">❌ 无</td>
+<td>验证码处理</td>
+<td>YesCaptcha + Turnstile Solver</td>
+<td>基础</td>
+<td>基础</td>
 </tr>
 <tr>
-<td>CLI 工具</td>
-<td align="center">✅ <code>npx prompts.chat</code></td>
-<td align="center">❌ 无</td>
-<td align="center">❌ 无</td>
-<td align="center">❌ 无</td>
+<td>批量注册上限</td>
+<td>1000 账号</td>
+<td>未明确</td>
+<td>未明确</td>
 </tr>
 <tr>
-<td>儿童教育模式</td>
-<td align="center">✅ Promi 游戏</td>
-<td align="center">❌ 无</td>
-<td align="center">❌ 无</td>
-<td align="center">❌ 无</td>
+<td>定时任务</td>
+<td>✅ APScheduler</td>
+<td>❌</td>
+<td>❌</td>
 </tr>
 <tr>
-<td>多模型支持</td>
-<td align="center">✅ ChatGPT/Claude/Gemini/Llama/Mistral</td>
-<td align="center">⚠️ 仅 ChatGPT</td>
-<td align="center">⚠️ 仅 ChatGPT</td>
-<td align="center">⚠️ 仅 ChatGPT</td>
+<td>Docker 部署</td>
+<td>✅</td>
+<td>❌</td>
+<td>❌</td>
 </tr>
 <tr>
-<td>数据格式导出</td>
-<td align="center">✅ CSV / Hugging Face Dataset</td>
-<td align="center">✅ 仅仓库</td>
-<td align="center">❌ 付费下载</td>
-<td align="center">❌ 无</td>
+<td>代理池管理</td>
+<td>✅</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>文档完善度</td>
+<td>完整（中英文双语）</td>
+<td>基础</td>
+<td>中等</td>
 </tr>
 </tbody></table>
-<p><strong>总结</strong>：如果你只是需要一个 prompt 列表，原始 <code>Awesome ChatGPT Prompts</code> 足够；但如果你需要<strong>可私有化部署、可集成到工作流、有多模型支持</strong>的完整方案，prompts.chat 是目前最成熟的选择。</p>
+<blockquote>
+<p><strong>总结</strong>：auto_reg 在前两代基础上实现了质的飞跃——从命令行工具升级为完整的 Web 应用，从单平台支持扩展到多平台插件化架构，是当前该领域功能最完善的方案之一。</p>
+</blockquote>
 <hr>
 <h2>🚀 快速上手</h2>
-<h3>方式一：一键创建（推荐）</h3>
-<pre><code class="language-bash"># 1. 使用 npx 直接创建一个全新的提示词库项目
-npx prompts.chat new my-prompt-library
-
-# 2. 进入项目目录
-cd my-prompt-library
-
-# 3. 运行设置向导（配置品牌、主题、认证方式等）
-npm run setup
-</code></pre>
-<p>设置向导会引导你完成以下配置：</p>
-<ul>
-<li><strong>Branding</strong>：自定义项目名称、Logo、颜色主题</li>
-<li><strong>Authentication</strong>：选择认证方式（GitHub OAuth / Google OAuth / Azure AD / 无认证）</li>
-<li><strong>Database</strong>：连接 PostgreSQL 数据库（推荐使用 <a href="https://get.neon.com/VqfnMo4">Neon</a> 的托管服务）</li>
-<li><strong>Features</strong>：开关 MCP Server、CLI 等功能模块</li>
-</ul>
-<h3>方式二：从源码部署</h3>
-<pre><code class="language-bash"># 1. 克隆仓库
-git clone https://github.com/f/prompts.chat.git
-cd prompts.chat
-
-# 2. 安装依赖
-npm install
-
-# 3. 运行初始化设置
-npm run setup
-</code></pre>
-<h3>使用 MCP Server（接入 Claude Code 等工具）</h3>
-<p>在你的 AI 工具配置中添加以下 JSON：</p>
-<pre><code class="language-json">{
-  &quot;mcpServers&quot;: {
-    &quot;prompts.chat&quot;: {
-      &quot;url&quot;: &quot;https://prompts.chat/api/mcp&quot;
-    }
-  }
-}
-</code></pre>
-<p>如果需要本地部署：</p>
-<pre><code class="language-json">{
-  &quot;mcpServers&quot;: {
-    &quot;prompts.chat&quot;: {
-      &quot;command&quot;: &quot;npx&quot;,
-      &quot;args&quot;: [&quot;-y&quot;, &quot;prompts.chat&quot;, &quot;mcp&quot;]
-    }
-  }
-}
-</code></pre>
-<h3>使用 CLI 命令</h3>
-<pre><code class="language-bash"># 直接调用 prompts.chat CLI
-npx prompts.chat
-
-# 或者安装后全局使用
-npm install -g prompts.chat
-prompts.chat
-</code></pre>
-<h3>浏览提示词库</h3>
-<ul>
-<li>在线浏览：<a href="https://prompts.chat/prompts">prompts.chat/prompts</a></li>
-<li>原始 Markdown：<a href="https://raw.githubusercontent.com/f/prompts.chat/main/PROMPTS.md">PROMPTS.md</a></li>
-<li>数据集下载：<a href="prompts.csv">CSV 格式</a> / <a href="https://huggingface.co/datasets/fka/prompts.chat">Hugging Face Dataset</a></li>
-</ul>
-<hr>
-<h2>💡 使用建议</h2>
-<h3>✅ 什么时候用</h3>
-<ul>
-<li><strong>团队需要统一 AI 使用标准</strong>：通过 self-host 部署，为团队提供经过筛选的高质量提示词模板，保证输出质量的一致性。</li>
-<li><strong>数据敏感场景</strong>：金融、医疗、法律等行业的组织需要将 AI 数据保留在内部网络，私有化部署是唯一选择。</li>
-<li><strong>想系统学习 Prompt Engineering</strong>：交互式书籍从零开始讲解，配合实际 prompt 示例，比纯文字教程高效得多。</li>
-<li><strong>需要快速集成到现有 AI 工作流</strong>：MCP Server 和 CLI 工具让你可以轻松把提示词库嵌入到开发流程中。</li>
-</ul>
-<h3>❌ 什么时候不用</h3>
-<ul>
-<li><strong>只是偶尔用一下 AI</strong>：个人轻度用户直接访问 <a href="https://prompts.chat">prompts.chat</a> 浏览即可，没必要本地部署。</li>
-<li><strong>只需要单一模型且追求最简单方案</strong>：如果只用 ChatGPT 且不在意隐私，原始 <code>Awesome ChatGPT Prompts</code> 仓库更轻量。</li>
-<li><strong>预算极其有限且不想折腾服务器</strong>：Self-host 需要 PostgreSQL 数据库和一定的运维成本，不适合零基础设施的场景。</li>
-<li><strong>需要付费 prompt 市场</strong>：如果你想买卖 prompt（而不是免费使用社区资源），PromptBase 这类平台更合适。</li>
-</ul>
-<h3>👥 适合人群</h3>
+<h3>环境要求</h3>
 <table>
 <thead>
 <tr>
-<th>人群</th>
-<th>推荐理由</th>
+<th>组件</th>
+<th>最低版本</th>
+<th>说明</th>
 </tr>
 </thead>
 <tbody><tr>
-<td><strong>AI 爱好者 / 开发者</strong></td>
-<td>丰富的 prompt 示例 + MCP 集成，加速日常开发</td>
+<td>Python</td>
+<td>3.12+</td>
+<td>推荐使用 Conda 管理环境</td>
 </tr>
 <tr>
-<td><strong>内容创作者 / 运营</strong></td>
-<td>写作、营销、SEO 等场景化 prompt 直接复用</td>
+<td>Node.js</td>
+<td>18+</td>
+<td>用于前端构建</td>
 </tr>
 <tr>
-<td><strong>企业 IT / 技术负责人</strong></td>
-<td>私有化部署保障数据隐私，搭建内部 AI 中枢</td>
+<td>Git</td>
+<td>任意</td>
+<td>克隆仓库</td>
 </tr>
 <tr>
-<td><strong>教育工作者</strong></td>
-<td>Promi 儿童模式 + 交互式书籍，融入 AI 素养教育</td>
-</tr>
-<tr>
-<td><strong>Prompt Engineering 学习者</strong></td>
-<td>25+ 章节系统化教程 + 真实 prompt 案例</td>
+<td>Docker</td>
+<td>可选</td>
+<td>一键部署方案</td>
 </tr>
 </tbody></table>
+<h3>方法一：一键部署（推荐）</h3>
+<pre><code class="language-bash"># 1. 克隆仓库
+git clone https://github.com/dsclca12/auto_reg.git
+cd auto_reg
+
+# 2. 赋予部署脚本执行权限（Linux/Mac）
+chmod +x deploy.sh
+
+# 3. 运行一键部署脚本
+./deploy.sh
+</code></pre>
+<p>部署完成后，浏览器访问 <code>http://localhost:8000</code> 即可看到管理界面。</p>
+<h3>方法二：手动安装</h3>
+<pre><code class="language-bash"># 1. 克隆仓库并进入项目目录
+git clone https://github.com/dsclca12/auto_reg.git
+cd auto_reg
+
+# 2. 创建 Python 虚拟环境（推荐使用 Conda）
+conda create -n any-auto-register python=3.12 -y
+conda activate any-auto-register
+
+# 3. 安装 Python 依赖
+pip install -r requirements.txt
+
+# 4. 安装浏览器驱动（Playwright 控制的 Chromium）
+python -m playwright install chromium
+
+# 5. 下载 Camoufox（反检测浏览器指纹工具）
+python -m camoufox fetch
+
+# 6. 安装前端依赖并构建
+cd frontend
+npm install
+npm run build
+cd ..
+
+# 7. 复制环境变量配置文件并编辑
+cp .env.example .env
+# 在 .env 中填入你的邮箱 API Key、代理等配置
+
+# 8. 启动服务
+python main.py
+</code></pre>
+<blockquote>
+<p>启动成功后同样访问 <code>http://localhost:8000</code>。</p>
+</blockquote>
+<h3>基本使用流程</h3>
+<ol>
+<li><strong>配置邮箱服务</strong>：在 <code>.env</code> 中填写邮箱服务的 API Key（如 MoeMail、SkyMail 等），不同平台对邮箱要求不同，参考 README 中的邮箱方案表选择合适的策略。</li>
+<li><strong>配置验证码服务</strong>：如果你选择使用 YesCaptcha，在 <code>.env</code> 中填入 <code>YESCAPTCHA_CLIENT_KEY</code>；如果使用本地 Turnstile Solver，设置 <code>LOCAL_SOLVER_URL</code>。</li>
+<li><strong>配置代理（可选）</strong>：设置 <code>PROXY_URL</code> 以提高注册成功率。</li>
+<li><strong>在 Web 界面中选择目标平台</strong>，填写注册参数，点击开始。</li>
+<li><strong>查看注册结果</strong>：在管理界面中查看每个账号的注册状态、Token 信息等。</li>
+</ol>
+<hr>
+<h2>💡 使用建议</h2>
+<h3>✅ 什么时候推荐使用</h3>
+<ul>
+<li>你有<strong>明确的批量注册需求</strong>（如团队多账号管理、AI 平台压力测试）。</li>
+<li>你需要<strong>技术学习和研究</strong>自动化注册流程、风控对抗等话题。</li>
+<li>你愿意投入时间<strong>配置邮箱和验证码服务</strong>，因为这些是注册成功的关键变量。</li>
+</ul>
+<h3>⚠️ 什么时候不适合使用</h3>
+<ul>
+<li>你只是<strong>偶尔注册一两个账号</strong>——手动注册可能更简单直接。</li>
+<li>你希望<strong>100% 注册成功</strong>——任何自动化工具都无法绕过平台的风控策略，Kiro 等平台对邮箱要求极其严格。</li>
+<li>你打算用于<strong>商业批量注册或恶意用途</strong>——项目明确声明仅供学习研究，且可能违反平台使用条款。</li>
+</ul>
+<h3>👥 适合人群</h3>
+<ul>
+<li><strong>AI 开发者</strong>：需要多个 ChatGPT / Cursor 账号进行不同项目测试的开发者。</li>
+<li><strong>安全研究人员</strong>：希望研究平台注册风控机制的从业者。</li>
+<li><strong>自动化爱好者</strong>：对浏览器自动化（Playwright）、反检测技术（Camoufox）感兴趣的动手玩家。</li>
+<li><strong>开源贡献者</strong>：愿意参与插件开发、扩展新平台支持的技术贡献者。</li>
+</ul>
 <hr>
 <h2>🔗 相关链接</h2>
 <ul>
-<li><strong>GitHub 仓库</strong>：<a href="https://github.com/f/prompts.chat">https://github.com/f/prompts.chat</a></li>
-<li><strong>官方网站 / Demo</strong>：<a href="https://prompts.chat">https://prompts.chat</a></li>
-<li><strong>提示词在线浏览</strong>：<a href="https://prompts.chat/prompts">https://prompts.chat/prompts</a></li>
-<li><strong>交互式书籍</strong>：<a href="https://fka.gumroad.com/l/art-of-chatgpt-prompting">https://fka.gumroad.com/l/art-of-chatgpt-prompting</a></li>
-<li><strong>儿童模式（Promi）</strong>：<a href="https://prompts.chat/kids">https://prompts.chat/kids</a></li>
-<li><strong>Hugging Face 数据集</strong>：<a href="https://huggingface.co/datasets/fka/prompts.chat">https://huggingface.co/datasets/fka/prompts.chat</a></li>
-<li><strong>PROMPTS.md（原始 Markdown）</strong>：<a href="https://raw.githubusercontent.com/f/prompts.chat/main/PROMPTS.md">https://raw.githubusercontent.com/f/prompts.chat/main/PROMPTS.md</a></li>
-<li><strong>Self-Hosting 完整文档</strong>：<a href="https://github.com/f/prompts.chat/blob/main/SELF-HOSTING.md">SELF-HOSTING.md</a></li>
-<li><strong>Docker 部署指南</strong>：<a href="https://github.com/f/prompts.chat/blob/main/DOCKER.md">DOCKER.md</a></li>
-<li><strong>MCP 文档</strong>：<a href="https://prompts.chat/docs/api">https://prompts.chat/docs/api</a></li>
+<li><strong>GitHub 仓库</strong>：<a href="https://github.com/dsclca12/auto_reg">https://github.com/dsclca12/auto_reg</a></li>
+<li><strong>原始项目（1st Gen）</strong>：<a href="https://github.com/lxf746/any-auto-register">https://github.com/lxf746/any-auto-register</a></li>
+<li><strong>二代 Fork</strong>：<a href="https://github.com/zc-zhangchen/any-auto-register">https://github.com/zc-zhangchen/any-auto-register</a></li>
+<li><strong>临时邮件参考项目</strong>：<a href="https://github.com/dreamhunter2333/cloudflare_temp_email">https://github.com/dreamhunter2333/cloudflare_temp_email</a></li>
+<li><strong>项目 README（英文）</strong>：<a href="https://github.com/dsclca12/auto_reg/blob/main/README.md">https://github.com/dsclca12/auto_reg/blob/main/README.md</a></li>
+<li><strong>项目 README（中文）</strong>：<a href="https://github.com/dsclca12/auto_reg/blob/main/README_CN.md">https://github.com/dsclca12/auto_reg/blob/main/README_CN.md</a></li>
 </ul>
 <hr>
 <blockquote>
-<p><strong>一句话总结</strong>：prompts.chat 不只是一个 prompt 列表，它是一个<strong>完整的 AI 对话基础设施</strong>——从学习、搜索、使用到私有化部署，覆盖了个人到企业级用户的全链路需求。如果你正在认真对待&quot;与 AI 的协作&quot;，这个项目值得放进工具箱。</p>
+<p>⚠️ <strong>免责声明</strong>：本项目仅供学习与技术研究使用。使用者需自行承担因使用本项目产生的所有法律风险和平台后果。作者不对任何因滥用本项目导致的损失负责。请确保你的使用行为符合当地法律法规和各平台的服务条款。</p>
 </blockquote>
 
 </body>
