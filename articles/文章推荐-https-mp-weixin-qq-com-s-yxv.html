@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>📖 文章推荐 — https://mp.weixin.qq.com/s/yXv</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; background: #fff; color: #222; line-height: 1.8; }
+  h1 { font-size: 24px; border-bottom: 2px solid #0366d6; padding-bottom: 10px; }
+  h2 { color: #1a1a1a; margin-top: 30px; }
+  h3 { color: #333; }
+  a { color: #0366d6; }
+  code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-size: 14px; }
+  pre { background: #f6f8fa; padding: 16px; border-radius: 6px; overflow-x: auto; }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid #ddd; margin: 0; padding-left: 16px; color: #666; }
+  table { border-collapse: collapse; width: 100%; margin: 16px 0; }
+  th, td { border: 1px solid #ddd; padding: 8px 12px; text-align: left; }
+  th { background: #f6f8fa; }
+  hr { border: none; border-top: 1px solid #eee; margin: 30px 0; }
+  .back { display: inline-block; margin-bottom: 20px; color: #0366d6; text-decoration: none; }
+</style>
+</head>
+<body>
+<a href="../index.html" class="back">← 返回首页</a>
+<h1>Codex 装完别急写代码，先装这 5 个 Skill</h1>
+<blockquote>
+<p>刚装完 Codex 直接上手写代码，结果往往是&quot;改了三遍还不对&quot;。这篇文章告诉你：差一步就是没装 Skill。5 个社区公认的 Skill，能让你的 Codex 从&quot;瞎写&quot;变成&quot;按规矩办事&quot;。</p>
+</blockquote>
+<hr>
+<h2>📌 这篇文章说了什么</h2>
+<p>刚装完 Codex 的新手，往往兴冲冲打开终端打了第一句&quot;帮我写个登录页面&quot;，结果出来的代码又泛又乱，改了三遍还不对。问题出在哪？你可能漏了一步——装 <strong>Skill</strong>。</p>
+<p>这篇文章只回答一个问题：<strong>刚装完 Codex 的新手，应该装哪几个 Skill、怎么装、装完有什么变化。</strong> 文章介绍了 5 个社区公认的&quot;刚需&quot; Skill，分别解决&quot;没想清楚就动手&quot;、&quot;会话崩溃丢进度&quot;、&quot;Codex 乱改代码&quot;、&quot;长任务接不住&quot;、&quot;联网搜不到最新信息&quot;这 5 个高频痛点。每个 Skill 都附带了安装命令和使用场景，照着装就能用。</p>
+<hr>
+<h2>🎯 核心观点</h2>
+<ol>
+<li><strong>Skill 是 Codex 的&quot;岗位手册&quot;，不装它就等于裸奔。</strong> Codex 默认靠猜你想干什么，装了 Skill 之后它按你定好的规矩做事，产出质量天差地别。</li>
+<li><strong>grill-me 能逼 Codex 先想清楚再动手。</strong> 你跟它说&quot;加个微信登录&quot;，它不会直接写代码，而是追问 OAuth2 还是扫码、用户表有没有 <code>openid</code> 字段、老用户怎么绑定——把需求对齐了再开工。</li>
+<li><strong>planning-with-files 让崩溃的会话也能无缝接续。</strong> Codex 会话聊到后边越来越慢、越来越糊涂，这个 Skill 把计划和进度写到三个文件里，下次开新会话直接接着干。</li>
+<li><strong>Karpathy Guidelines 用 4 条硬规则纠正 Codex 的三大毛病。</strong> 毛病包括：假设错了不问就动手、50 行能搞定非写 500 行、顺手&quot;改进&quot;不相关的代码。</li>
+<li><strong>handoff 是长任务的&quot;接力棒&quot;，Firecrawl 给 Codex 装上实时联网。</strong> 会话太长就 handoff 开新会话，联网搜索用 Firecrawl 代替默认缓存，拿到的才是最新内容。</li>
+</ol>
+<hr>
+<h2>💡 深度解读</h2>
+<h3>Skill 到底是什么？和 AGENTS.md 有什么区别？</h3>
+<p><strong>Skill</strong> 就是一个 Markdown 文件，告诉 Codex 在特定场景下怎么做。装之前 Codex 就像没装任何 App 的新手机——能开机，但什么也干不好。装了 Skill 之后，Codex 自动遵守这些规则。</p>
+<p>一个容易搞混的区别是 <strong>AGENTS.md</strong> 和 Skill 的范围不同：</p>
+<table>
+<thead>
+<tr>
+<th>对比维度</th>
+<th>AGENTS.md</th>
+<th>Skill</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>作用范围</td>
+<td>全局规则，相当于公司制度</td>
+<td>特定场景指令，相当于岗位手册</td>
+</tr>
+<tr>
+<td>生效条件</td>
+<td>对所有任务生效</td>
+<td>只在匹配到的时候才加载</td>
+</tr>
+<tr>
+<td>适用场景</td>
+<td>团队规范、全局约束</td>
+<td>特定工作流（如写代码、规划任务）</td>
+</tr>
+<tr>
+<td>例子</td>
+<td>&quot;不要删注释&quot;、&quot;代码必须通过 Lint&quot;</td>
+<td>&quot;写代码前先追问需求&quot;、&quot;只改必须改的文件&quot;</td>
+</tr>
+</tbody></table>
+<p><strong>Karpathy Guidelines</strong> 这个 Skill 就完美体现了这种区别：它只在 Codex 写代码的时候才加载，不会在你让它做别的任务时跑出来多嘴。如果把同样内容写进 AGENTS.md，那就是全局生效，所有任务都受约束，反而可能影响其他场景。</p>
+<h3>5 个核心 Skill 深度解析</h3>
+<h4>Skill 1：grill-me — 写代码前先想清楚</h4>
+<p>Codex 最大的毛病是带着错误假设就动手。你跟它说&quot;加个微信登录&quot;，它直接开始写代码，基本不会追问你：微信登录用 OAuth2 还是扫码？用户表有 <code>openid</code> 字段吗？老用户怎么绑定？</p>
+<p>grill-me 就是来治这个毛病的。它的核心指令很简单：<strong>&quot;Interview me relentlessly about every aspect of this plan until we reach a shared understanding.&quot;</strong>（这个计划的方方面面对我穷追不舍地追问，直到我们达成共识。）</p>
+<p>使用场景：接到新需求、做重构、修 bug 之前——任何需要先想的场景。Reddit 上有用户说用了 grill-me 之后，&quot;it completely changed how I plan with Codex&quot;，感觉 90% 的情况能做出自己想要的结果。</p>
+<h4>Skill 2：planning-with-files — 崩溃了也能接着干</h4>
+<p>和 Codex 聊久了，会话会崩。上下文太长之后 Codex 变糊涂，改东忘西。<code>/compact</code> 能压缩上下文，但压缩完还是同一个对话，结构化的进度信息丢了。</p>
+<p>planning-with-files 把你的计划和进度写到三个文件里：</p>
+<ul>
+<li><code>task_plan.md</code>：要做什么</li>
+<li><code>findings.md</code>：发现了什么</li>
+<li><code>progress.md</code>：做到哪了</li>
+</ul>
+<p>下次开新会话，Codex 读这三个文件就能接着干，不从头来。</p>
+<p>它和 handoff 的区别：handoff 是&quot;拍快照走人&quot;，快照拍完当前会话就结束；planning-with-files 是&quot;边做边记&quot;，整个工作过程中持续记录，每完成一步自动更新进度。</p>
+<h4>Skill 3：Karpathy Guidelines — 让 Codex 少干蠢事</h4>
+<p>Codex 最常见的三个毛病：</p>
+<ol>
+<li>假设错了不问就动手</li>
+<li>50 行能搞定非写 500 行</li>
+<li>顺手&quot;改进&quot;不相关的代码</li>
+</ol>
+<p>Karpathy Guidelines 把这三条行为纠正编成四条硬规则：</p>
+<table>
+<thead>
+<tr>
+<th>规则</th>
+<th>英文原文</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>先想再写</td>
+<td>Think first, then code</td>
+<td>有多种理解的时候列出来让你选，不偷偷选一个就跑</td>
+</tr>
+<tr>
+<td>简单优先</td>
+<td>Keep it simple</td>
+<td>200 行能写完的别写 500 行，不加你没要求的功能</td>
+</tr>
+<tr>
+<td>手术式改动</td>
+<td>Surgical changes</td>
+<td>只碰必须改的文件，不顺便&quot;优化&quot;旁边的代码</td>
+</tr>
+<tr>
+<td>目标驱动</td>
+<td>Goal-driven</td>
+<td>定义成功标准，写测试验证，循环直到通过</td>
+</tr>
+</tbody></table>
+<p>这四条规则源自 Andrej Karpathy 今年 1 月分享的 AI 编码工作流观察。开发者 forrestchang 据此改写成 CLAUDE.md 格式，multica-ai 又做了跨平台 Skill 版本，GitHub 上超过 17 万 stars。</p>
+<p>什么时候感觉最明显？改一个小 bug，结果 Codex 重构了半个文件——装了这条 Skill 之后不这么干了。</p>
+<h4>Skill 4：handoff — 会话接力棒</h4>
+<p>Codex 会话聊到后边，越来越慢，越来越糊涂。这时候你需要开个新对话，但前面的上下文怎么办？</p>
+<p>handoff 把当前会话压缩成一份结构化的 markdown 文档，包含目的、上下文、建议的 skill、现有文件指针。你开个新对话，把这份文档丢给它，直接接着干。</p>
+<p>和 <code>/compact</code> 的区别：compact 还是在同一个对话里压缩，对话还是那个越来越长的对话；handoff 是开新对话，把工作笔记带过去，从干净的状态重新开始。</p>
+<p>Ben Holmes 分享过一个进阶用法：在 Claude Code 里用 grill-me 做完规划，然后 handoff 给 Codex 的多个 worktree 并行实现。新手先记住&quot;会话太长就 handoff&quot;就够了。</p>
+<h4>Skill 5：Firecrawl — 给 Codex 连上互联网</h4>
+<p>Codex 自带联网搜索，但默认走缓存，拿到的可能是几天前的内容。如果你的问题需要最新信息——比如刚发布的 API 变更、竞品最新的定价——缓存里的旧数据帮不上忙。</p>
+<p>Firecrawl 给 Codex 装上实时联网能力：search（搜索）、scrape（抓取页面）、crawl（爬整站）、map（站点地图）、interact（操控浏览器）。不是搜缓存，是搜实时网页。</p>
+<p>安装需要 API key，免费额度每月 1000 次，够日常用。有一点要注意：Firecrawl 的服务在国外，需要稳定的网络环境。</p>
+<h3>怎么装？两种位置两种场景</h3>
+<p>安装就一条命令的事，但有两种安装位置：</p>
+<pre><code class="language-bash"># 全局安装：放在 ~/.agents/skills/，所有项目都能用
+npx skills add mattpocock/skills --skill grill-me -y -g
+
+# 项目级安装：放在项目根目录的 .agents/skills/，随仓库走，团队共享
+npx skills add mattpocock/skills --skill handoff -y
+</code></pre>
+<p>装完验证：看目录下有没有 SKILL.md</p>
+<pre><code class="language-bash">ls ~/.agents/skills/grill-me/SKILL.md
+</code></pre>
+<p>另外 Codex 内置了 <code>$skill-installer</code>，在 Codex 里直接输入这个命令，可以交互式选择安装官方仓库的 skill。不过它只收录了 <code>openai/skills</code> 仓库的 skill，社区 skill 还得用 <code>npx skills add</code> 安装。</p>
+<p>装完怎么用？两种方式：输入 <code>$skill-name</code> 显式调用，或者你的任务描述匹配到 skill 的触发条件时自动加载。</p>
+<hr>
+<h2>🚀 如何实践</h2>
+<h3>第一步：装上 5 个刚需 Skill（5 分钟搞定）</h3>
+<pre><code class="language-bash"># 1. 写代码前先追问需求（全局安装）
+npx skills add mattpocock/skills --skill grill-me -y -g
+
+# 2. 记录任务进度，会话崩溃也能接着干（全局安装）
+npx skills add OthmanAdi/planning-with-files -y -g
+
+# 3. 纠正 Codex 三大毛病（全局安装）
+npx skills add multica-ai/andrej-karpathy-skills -y -g
+
+# 4. 会话太长就接力（项目级或全局按需）
+npx skills add mattpocock/skills --skill handoff -y -g
+
+# 5. 实时联网搜索（需要 API key）
+npx -y firecrawl-cli@latest init --all --browser
+</code></pre>
+<h3>第二步：装完验证</h3>
+<p>装完每个 Skill 后，跑一个简单任务验证是否生效。比如装完 Karpathy Guidelines 后，让 Codex 改一个小 bug，观察它会不会顺手&quot;优化&quot;旁边的代码——装了之后就不会了。</p>
+<h3>第三步：按需扩展</h3>
+<p>如果你觉得 5 个刚需还不够，下面这些可以根据工作流按需安装：</p>
+<table>
+<thead>
+<tr>
+<th>Skill 名称</th>
+<th>功能</th>
+<th>安装命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>mcp-builder</td>
+<td>引导式搭建 MCP Server</td>
+<td><code>$skill-installer</code></td>
+</tr>
+<tr>
+<td>skill-creator</td>
+<td>交互式问答，帮你写自己的 Skill</td>
+<td>Codex 内置，输入 <code>$skill-creator</code></td>
+</tr>
+<tr>
+<td>agent-skill-creator</td>
+<td>把你的工作流一键转为可复用 Skill，17 平台兼容</td>
+<td><code>npx skills add FrancyJGLisboa/agent-skill-creator</code></td>
+</tr>
+</tbody></table>
+<h3>中文用户专属资源</h3>
+<ul>
+<li><strong>ok-skills</strong>（mxyhi）：45 个精选 skill，有中文 README<pre><code class="language-bash">npx skills add mxyhi/ok-skills
+</code></pre>
+</li>
+<li><strong>claude-code-skills-zh</strong>（laolaoshiren）：200+ skill 中文合集，按场景分类</li>
+<li><strong>planning-with-files-zh</strong>（explainx.ai 提供的中文版）：<pre><code class="language-bash">npx skills add https://github.com/othmanadi/planning-with-files --skill planning-with-files-zh
+</code></pre>
+</li>
+</ul>
+<h3>进阶建议</h3>
+<ol>
+<li><strong>先装 grill-me 和 Karpathy Guidelines</strong>，这两个对代码质量提升最明显。</li>
+<li><strong>长任务必开 planning-with-files</strong>，会话崩溃时你会感谢自己。</li>
+<li><strong>会话太长就 handoff</strong>，不要硬撑。</li>
+<li><strong>需要最新信息时用 Firecrawl</strong>，不要依赖默认缓存搜索。</li>
+</ol>
+<hr>
+<h2>💭 总结与推荐</h2>
+<p>这篇文章的价值在于：<strong>它把&quot;装完 Codex 后第一步该干嘛&quot;这件事讲清楚了。</strong> 核心结论是——装完别急写代码，先装 Skill。对于刚接触 Codex 的新手，这 5 个 Skill 能立竿见影地提升产出质量；对于有经验的用户，grill-me 和 Karpathy Guidelines 值得立刻装上。适合所有正在用 Codex 写代码、但总觉得&quot;结果不够好&quot;的人。</p>
+
+</body>
+</html>
