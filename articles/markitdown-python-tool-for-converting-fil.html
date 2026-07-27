@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>🔥 markitdown — Python tool for converting fil</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; background: #fff; color: #222; line-height: 1.8; }
+  h1 { font-size: 24px; border-bottom: 2px solid #0366d6; padding-bottom: 10px; }
+  h2 { color: #1a1a1a; margin-top: 30px; }
+  h3 { color: #333; }
+  a { color: #0366d6; }
+  code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-size: 14px; }
+  pre { background: #f6f8fa; padding: 16px; border-radius: 6px; overflow-x: auto; }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid #ddd; margin: 0; padding-left: 16px; color: #666; }
+  table { border-collapse: collapse; width: 100%; margin: 16px 0; }
+  th, td { border: 1px solid #ddd; padding: 8px 12px; text-align: left; }
+  th { background: #f6f8fa; }
+  hr { border: none; border-top: 1px solid #eee; margin: 30px 0; }
+  .back { display: inline-block; margin-bottom: 20px; color: #0366d6; text-decoration: none; }
+</style>
+</head>
+<body>
+<a href="../index.html" class="back">← 返回首页</a>
+<h1>微软开源项目 markitdown：你的文档转 Markdown 瑞士军刀</h1>
+<hr>
+<h2>📌 项目是什么</h2>
+<p>在 AI 工作流中，LLM（大语言模型）最擅长处理的输入格式是什么？<strong>Markdown</strong>。它既保留了文档结构（标题、列表、表格、链接），又接近纯文本，是连接非结构化文档与 AI 模型的理想桥梁。然而，现实中我们手头的文档往往是一份份 Word、Excel、PPT、PDF，甚至是 YouTube 视频链接——它们格式各异、解析困难，手动转换简直折磨人。</p>
+<p>这正是微软开源的 <strong>markitdown</strong> 要解决的问题：一个轻量级的 Python 工具，把各种文件和办公文档统一转换成 Markdown，让 LLM 和文本分析流水线可以直接&quot;吃掉&quot;你的文档。它定位上类似于 <a href="https://github.com/deanmalmgren/textract">textract</a>，但更专注于保留文档结构而非单纯提取纯文本，输出更利于机器消费而非人类阅读。</p>
+<p>自 2024 年 11 月发布以来，markitdown 迅速获得 <strong>16.9 万 Star</strong>，成为 AI 数据处理领域的明星工具。</p>
+<hr>
+<h2>🎯 适用场景</h2>
+<ul>
+<li><strong>RAG（检索增强生成）系统构建</strong>：将公司内部的 Word 报告、PDF 合同、Excel 数据表批量转为 Markdown，作为向量数据库的文档来源，让 LLM 能精准检索和回答基于这些文档的问题。</li>
+<li><strong>LLM 驱动的自动化文档处理流水线</strong>：配合 AutoGen 或 LangChain，把上传的 PPT 演示文稿转成 Markdown 后，由 AI 自动生成摘要、提取要点或翻译成其他语言。</li>
+<li><strong>学术研究与知识管理</strong>：批量转换 EPub 电子书、学术 PDF 为 Markdown 格式，存入个人知识库（如 Obsidian、Notion），实现全文检索和双向链接。</li>
+<li><strong>内容创作者的素材整理</strong>：下载 YouTube 视频并自动转录为 Markdown 笔记，或将网页 HTML 转为干净的 Markdown 方便二次编辑和发布。</li>
+<li><strong>Outlook 邮件归档与分析</strong>：将 .eml 邮件文件转为 Markdown，结合 AI 进行邮件分类、摘要或提取待办事项。</li>
+</ul>
+<hr>
+<h2>✨ 核心特性</h2>
+<ol>
+<li><p><strong>格式覆盖极广</strong>：支持 PDF、Word、PPT、Excel、图片（含 OCR）、音频（含语音转写）、HTML、CSV/JSON/XML、ZIP 压缩包、YouTube 链接、EPub 等，几乎涵盖了日常办公中 90% 以上的文件类型。</p>
+</li>
+<li><p><strong>结构保留优于纯文本提取</strong>：专门保留标题层级、列表、表格、链接等 Markdown 结构，生成的内容可以直接被 LLM 理解和利用，而非一团乱码的纯文字。</p>
+</li>
+<li><p><strong>Token 高效</strong>：Markdown 格式比 HTML 或富文本更紧凑，在 LLM 调用时能节省大量 Token 消耗和成本。</p>
+</li>
+<li><p><strong>命令行 + Python API 双模式</strong>：既可以用 <code>markitdown file.pdf &gt; out.md</code> 一行命令搞定，也能以编程方式灵活集成到 Python 脚本或应用中。</p>
+</li>
+<li><p><strong>插件化架构</strong>：支持第三方插件扩展，<code>markitdown-ocr</code> 插件通过 LLM Vision 能力为 PDF 等文件中的图片添加 OCR 文字识别，无需额外安装 ML 库。</p>
+</li>
+<li><p><strong>Azure 云端增强</strong>：可选接入 Azure Content Understanding 服务，支持视频文件转换、结构化字段提取（YAML front matter）、自定义分析器等高级功能。</p>
+</li>
+<li><p><strong>按需安装依赖</strong>：通过 <code>pip install &#39;markitdown[pdf, docx, pptx]&#39;</code> 精细控制所需的功能模块，避免安装不必要的依赖。</p>
+</li>
+<li><p><strong>MIT 许可证</strong>：完全开源免费，商业和个人使用均无限制。</p>
+</li>
+</ol>
+<hr>
+<h2>🆚 竞品对比</h2>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th><strong>markitdown</strong></th>
+<th><strong>textract</strong></th>
+<th><strong>pandoc</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>开发者维护</td>
+<td>微软 AutoGen 团队持续更新</td>
+<td>社区维护，更新较慢</td>
+<td>约翰·霍普金斯大学，社区老牌</td>
+</tr>
+<tr>
+<td>输出目标</td>
+<td><strong>Markdown</strong>（为 LLM 优化）</td>
+<td>纯文本为主</td>
+<td>多种格式互转（HTML, PDF, DOCX 等）</td>
+</tr>
+<tr>
+<td>LLM 友好度</td>
+<td>⭐⭐⭐⭐⭐ 原生 Markdown 输出</td>
+<td>⭐⭐ 纯文本，无结构信息</td>
+<td>⭐⭐⭐ 可输出 Markdown，但非主打</td>
+</tr>
+<tr>
+<td>图片 OCR 支持</td>
+<td>✅ 通过 markitdown-ocr 插件</td>
+<td>✅ 内置 Tesseract OCR</td>
+<td>❌ 不做 OCR</td>
+</tr>
+<tr>
+<td>音频转写</td>
+<td>✅ 内置支持</td>
+<td>✅ 内置支持</td>
+<td>❌ 不支持</td>
+</tr>
+<tr>
+<td>视频支持</td>
+<td>✅ 通过 Azure Content Understanding</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>依赖复杂度</td>
+<td>可选依赖，按需安装</td>
+<td>依赖较多（含系统库）</td>
+<td>单一二进制，依赖少</td>
+</tr>
+<tr>
+<td>插件生态</td>
+<td>✅ 支持第三方插件</td>
+<td>❌ 无</td>
+<td>❌ 无</td>
+</tr>
+<tr>
+<td>Token 效率</td>
+<td>高（结构化的 Markdown）</td>
+<td>低（纯文本无结构）</td>
+<td>中等</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>🚀 快速上手</h2>
+<h3>第 1 步：创建虚拟环境</h3>
+<pre><code class="language-bash"># 创建虚拟环境，避免污染全局 Python 环境
+python -m venv .venv
+# 激活虚拟环境（Linux/macOS）
+source .venv/bin/activate
+# Windows 用户使用：.venv\Scripts\activate
+</code></pre>
+<h3>第 2 步：安装 markitdown</h3>
+<pre><code class="language-bash"># 安装全部可选依赖，支持所有文件格式
+pip install &#39;markitdown[all]&#39;
+</code></pre>
+<blockquote>
+<p>💡 如果你只需要处理 Word 和 PDF，可以精简安装：<code>pip install &#39;markitdown[docx, pdf]&#39;</code>，减少不必要的依赖包。</p>
+</blockquote>
+<h3>第 3 步：命令行转换文件</h3>
+<pre><code class="language-bash"># 将 PDF 转换为 Markdown，输出到文件
+markitdown report.pdf -o report.md
+
+# 将 Word 文档转换并直接输出到终端
+markitdown presentation.pptx
+
+# 通过管道处理（适合脚本集成）
+cat data.xlsx | markitdown
+</code></pre>
+<h3>第 4 步：Python API 编程调用</h3>
+<pre><code class="language-python">from markitdown import MarkItDown
+
+# 创建转换器实例
+md_converter = MarkItDown()
+
+# 转换本地文件
+result = md_converter.convert(&quot;meeting_notes.docx&quot;)
+
+# 输出 Markdown 文本
+print(result.text_content)
+
+# 也可以转换 URL
+result = md_converter.convert(&quot;https://www.youtube.com/watch?v=example&quot;)
+print(result.text_content)
+</code></pre>
+<h3>第 5 步（进阶）：启用 OCR 插件识别图片中的文字</h3>
+<pre><code class="language-python">from markitdown import MarkItDown
+from openai import OpenAI
+
+# 配置 LLM 客户端（用于 OCR 图片识别）
+md_converter = MarkItDown(
+    enable_plugins=True,       # 启用插件功能
+    llm_client=OpenAI(),       # 使用 OpenAI 客户端
+    llm_model=&quot;gpt-4o&quot;,        # 指定多模态模型
+)
+
+# 转换含图片的 PDF，插件会自动对图片进行 OCR
+result = md_converter.convert(&quot;scanned_document.pdf&quot;)
+print(result.text_content)
+</code></pre>
+<blockquote>
+<p>📌 注意：OCR 插件需要单独安装 <code>pip install markitdown-ocr</code>，且需要配置 OpenAI API Key 或兼容的 LLM 服务端。</p>
+</blockquote>
+<hr>
+<h2>💡 使用建议</h2>
+<h3>✅ 什么时候用</h3>
+<ul>
+<li>你正在构建基于 LLM 的文档问答、摘要或分析应用，需要将各种格式文件统一为 LLM 可消费的 Markdown。</li>
+<li>你需要批量处理大量 Office 文档或 PDF，并希望保留原始文档的结构信息（表格、列表、标题层级）。</li>
+<li>你希望以最低的集成成本，将文件转换能力嵌入到现有的 Python 数据处理流水线中。</li>
+</ul>
+<h3>❌ 什么时候不用</h3>
+<ul>
+<li>你需要<strong>高保真</strong>的文档转换结果（比如精确还原 PDF 的排版、字体、样式），markitdown 的目标是 LLM 消费而非人类审美，不适合出版级质量要求。</li>
+<li>你主要处理图片/视频内容且不需要云端 AI 服务——markitdown 的图片处理依赖 LLM Vision 或 Azure 服务，会产生 API 费用。</li>
+<li>你只需要从 PDF 中提取纯文本做关键词搜索，用 <code>pdfplumber</code> 或 <code>PyPDF2</code> 这类轻量库更直接高效。</li>
+</ul>
+<h3>👥 适合人群</h3>
+<ul>
+<li><strong>AI 应用开发者</strong>：构建 RAG 系统、Agent 工作流、文档分析工具的核心组件。</li>
+<li><strong>数据工程师</strong>：将非结构化文档纳入数据处理 Pipeline。</li>
+<li><strong>研究者和学生</strong>：快速整理文献、笔记和资料。</li>
+<li><strong>内容运营团队</strong>：批量将内部文档转为统一格式的内容库。</li>
+</ul>
+<hr>
+<h2>🔗 相关链接</h2>
+<ul>
+<li><strong>GitHub 仓库</strong>：<a href="https://github.com/microsoft/markitdown">https://github.com/microsoft/markitdown</a></li>
+<li><strong>PyPI 包</strong>：<a href="https://pypi.org/project/markitdown/">https://pypi.org/project/markitdown/</a></li>
+<li><strong>markitdown-ocr 插件</strong>：可在 GitHub 搜索 <code>#markitdown-plugin</code> 找到</li>
+<li><strong>Azure Content Understanding 文档</strong>：<a href="https://learn.microsoft.com/azure/ai-services/content-understanding/">https://learn.microsoft.com/azure/ai-services/content-understanding/</a></li>
+</ul>
+<hr>
+<blockquote>
+<p><strong>总结</strong>：markitdown 是微软 AutoGen 团队献给 AI 社区的一份实用礼物。它不追求华丽，而是精准地解决了&quot;文档 → LLM 可读格式&quot;这个关键瓶颈。随着 AI Agent 和 RAG 应用的爆发，这个项目的实用性只会越来越高。如果你的项目涉及文档处理和 AI，强烈建议一试。</p>
+</blockquote>
+
+</body>
+</html>
