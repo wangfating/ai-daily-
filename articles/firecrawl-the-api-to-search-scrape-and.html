@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>🔥 firecrawl — The API to search, scrape, and</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; background: #fff; color: #222; line-height: 1.8; }
+  h1 { font-size: 24px; border-bottom: 2px solid #0366d6; padding-bottom: 10px; }
+  h2 { color: #1a1a1a; margin-top: 30px; }
+  h3 { color: #333; }
+  a { color: #0366d6; }
+  code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-size: 14px; }
+  pre { background: #f6f8fa; padding: 16px; border-radius: 6px; overflow-x: auto; }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid #ddd; margin: 0; padding-left: 16px; color: #666; }
+  table { border-collapse: collapse; width: 100%; margin: 16px 0; }
+  th, td { border: 1px solid #ddd; padding: 8px 12px; text-align: left; }
+  th { background: #f6f8fa; }
+  hr { border: none; border-top: 1px solid #eee; margin: 30px 0; }
+  .back { display: inline-block; margin-bottom: 20px; color: #0366d6; text-decoration: none; }
+</style>
+</head>
+<body>
+<a href="../index.html" class="back">← 返回首页</a>
+<h1>🔥 Firecrawl：给你的 AI Agent 装上一个&quot;全天候网页浏览器&quot;</h1>
+<blockquote>
+<p>157k Stars、AGPL-3.0 开源、TypeScript 编写——这个 Web Data API 正在成为 AI Agent 生态的基础设施。</p>
+</blockquote>
+<hr>
+<h2>📌 项目是什么</h2>
+<p>想象一下，你正在开发一个 AI Agent，让它去网站上&quot;找东西&quot;——比如抓取竞品价格、汇总新闻、提取产品规格。你很快会发现，这事儿远没有想象中那么简单：网页是动态渲染的（JS -heavy），有反爬机制，有验证码，有登录墙，有各种乱七八糟的 HTML 结构……传统爬虫库（如 Scrapy、BeautifulSoup）能处理的静态页面还好，一旦遇到 React/Vue 渲染的 SPA（Single Page Application），基本上就抓瞎了。</p>
+<p><strong>Firecrawl 就是来解决这个问题的。</strong> 它本质上是一个 <strong>Web Data API</strong>——你给它一个 URL 或一个搜索关键词，它帮你完成&quot;打开网页 → 渲染 JS → 提取内容 → 转成干净的 Markdown 或结构化 JSON&quot;这一整套流程，然后把结果直接吐给你。更关键的是，它的输出格式是 <strong>LLM-ready</strong> 的，这意味着你可以直接把这些数据喂给 GPT-4、Claude 或任何基于 LLM 的 Agent，而不需要再做一轮清洗和格式化。</p>
+<p>项目于 2024 年 4 月开源，目前在 GitHub 上已积累 <strong>157,893 Stars</strong>，成为 Web Scraping 领域最热门的开源项目之一。它既提供开源的 Self-hosted 方案，也提供托管云服务（<a href="https://firecrawl.dev">firecrawl.dev</a>），开发者可以根据需求灵活选择。</p>
+<p><img src="https://raw.githubusercontent.com/firecrawl/firecrawl/main/img/open-source-cloud.png" alt="Open Source vs Cloud"></p>
+<hr>
+<h2>🎯 适用场景</h2>
+<ul>
+<li><strong>AI Agent 的实时信息获取</strong>：让 Agent 自动搜索并抓取最新网页内容，用于新闻聚合、市场研究、竞品监控等场景。</li>
+<li><strong>将任意网站转为 LLM 可读格式</strong>：把 PDF、DOCX、HTML 网页统一提取成 Markdown，直接作为 RAG（Retrieval-Augmented Generation）系统的知识源。</li>
+<li><strong>动态网页数据抓取</strong>：需要点击、滚动、填写表单才能看到内容的页面（如电商搜索结果、社交媒体动态），Firecrawl 的 Interact 功能可以模拟这些操作。</li>
+<li><strong>大规模网站数据普查</strong>：用 Crawl 功能一次性抓取整个网站的所有页面，用于构建站点地图或批量数据收集。</li>
+<li><strong>MCP（Model Context Protocol）集成</strong>：作为 MCP Server 接入 Claude Code、Cursor 等 AI 工具，让 Agent 直接具备&quot;浏览网页&quot;的能力。</li>
+</ul>
+<hr>
+<h2>✨ 核心特性</h2>
+<ol>
+<li><strong>Search（搜索）</strong>：在互联网上搜索关键词，并自动抓取搜索结果页面的完整内容，返回结构化的 Markdown 结果。</li>
+<li><strong>Scrape（抓取）</strong>：将任意 URL 转换为 Markdown、HTML、截图或结构化 JSON，支持 <code>only-main-content</code> 模式自动提取正文。</li>
+<li><strong>Interact（交互式抓取）</strong>：先抓取页面，再通过 Prompt 或代码指令与页面交互——点击按钮、填写表单、滚动页面、等待加载，然后提取结果。</li>
+<li><strong>Crawl（批量爬取）</strong>：输入一个种子 URL，Firecrawl 会自动发现并抓取该网站下的所有页面，适合全站数据收集。</li>
+<li><strong>Map（站点地图）</strong>：快速发现一个网站上的所有 URL，速度快到适合做&quot;网站普查&quot;。</li>
+<li><strong>Batch Scrape（批量抓取）</strong>：异步处理数千个 URL，适合大规模数据管道。</li>
+<li><strong>Agent 模式</strong>：描述你想获取的数据类型，Agent 自动规划搜索→抓取→提取流程，零代码配置。</li>
+<li><strong>媒体解析</strong>：原生支持 PDF、DOCX 等网络托管文档的解析和提取。</li>
+</ol>
+<hr>
+<h2>🆚 竞品对比</h2>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th align="center"><strong>Firecrawl</strong></th>
+<th align="center"><strong>BeautifulSoup / Scrapy</strong></th>
+<th align="center"><strong>Playwright / Puppeteer</strong></th>
+<th align="center"><strong>Jina Reader</strong></th>
+<th align="center"><strong>SerpAPI</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>开源</td>
+<td align="center">✅ AGPL-3.0</td>
+<td align="center">✅ 开源</td>
+<td align="center">✅ 开源</td>
+<td align="center">✅ 开源</td>
+<td align="center">❌ 付费</td>
+</tr>
+<tr>
+<td>JS 渲染支持</td>
+<td align="center">✅ 内置</td>
+<td align="center">❌ 不支持</td>
+<td align="center">✅ 需要自己写</td>
+<td align="center">✅ 基础</td>
+<td align="center">✅</td>
+</tr>
+<tr>
+<td>LLM-ready 输出</td>
+<td align="center">✅ Markdown/JSON</td>
+<td align="center">❌ 原始 HTML</td>
+<td align="center">❌ 原始 HTML/DOM</td>
+<td align="center">✅ Markdown</td>
+<td align="center">⚠️ 需后处理</td>
+</tr>
+<tr>
+<td>交互式操作（点击/填写）</td>
+<td align="center">✅ Interact</td>
+<td align="center">❌</td>
+<td align="center">✅ 但需手写脚本</td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+</tr>
+<tr>
+<td>托管云服务</td>
+<td align="center">✅</td>
+<td align="center">❌ 需自建</td>
+<td align="center">❌ 需自建</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+</tr>
+<tr>
+<td>大规模批量抓取</td>
+<td align="center">✅ Batch/Crawl</td>
+<td align="center">✅ 但需自建调度</td>
+<td align="center">⚠️ 需自建</td>
+<td align="center">⚠️</td>
+<td align="center">✅</td>
+</tr>
+<tr>
+<td>零配置（代理/反爬）</td>
+<td align="center">✅ 自动处理</td>
+<td align="center">❌ 需自行解决</td>
+<td align="center">❌ 需自行解决</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+</tr>
+<tr>
+<td>MCP 工具支持</td>
+<td align="center">✅</td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+</tr>
+</tbody></table>
+<p><strong>一句话总结</strong>：Firecrawl 把 Scrapy 的爬取能力、Playwright 的浏览器自动化、Jina 的 Markdown 转换，以及 SerpAPI 的搜索能力，打包进了一个 API，并提供了开源版本和 MCP 工具链。</p>
+<hr>
+<h2>🚀 快速上手</h2>
+<h3>1. 获取 API Key</h3>
+<p>前往 <a href="https://firecrawl.dev">firecrawl.dev</a> 注册账号，获取你的 API Key（以 <code>fc-</code> 开头）。</p>
+<h3>2. 安装 SDK</h3>
+<pre><code class="language-bash"># Python 项目
+pip install firecrawl
+
+# Node.js 项目
+npm install firecrawl
+</code></pre>
+<h3>3. 基本使用示例</h3>
+<h4>搜索网页并抓取内容</h4>
+<pre><code class="language-python">from firecrawl import Firecrawl
+
+# 初始化客户端
+app = Firecrawl(api_key=&quot;fc-YOUR_API_KEY&quot;)
+
+# 搜索关键词，自动抓取结果页面内容
+results = app.search(&quot;firecrawl 开源项目&quot;, limit=5)
+
+for r in results:
+    print(f&quot;标题: {r[&#39;title&#39;]}&quot;)
+    print(f&quot;链接: {r[&#39;url&#39;]}&quot;)
+    print(f&quot;内容预览: {r[&#39;markdown&#39;][:200]}...&quot;)
+    print(&quot;---&quot;)
+</code></pre>
+<h4>抓取任意网页（输出干净 Markdown）</h4>
+<pre><code class="language-python">from firecrawl import Firecrawl
+
+app = Firecrawl(api_key=&quot;fc-YOUR_API_KEY&quot;)
+
+# 抓取网页，自动提取正文，转为 Markdown
+result = app.scrape(&quot;https://firecrawl.dev&quot;)
+
+print(result[&quot;markdown&quot;])
+</code></pre>
+<h4>交互式抓取（点击、搜索、提取）</h4>
+<pre><code class="language-python">from firecrawl import Firecrawl
+
+app = Firecrawl(api_key=&quot;fc-YOUR_API_KEY&quot;)
+
+# 第一步：抓取页面
+result = app.scrape(&quot;https://www.amazon.com&quot;)
+scrape_id = result[&quot;metadata&quot;][&quot;scrapeId&quot;]
+
+# 第二步：在页面上执行搜索（模拟用户在搜索框输入）
+app.interact(scrape_id, prompt=&quot;Search for &#39;mechanical keyboard&#39;&quot;)
+
+# 第三步：点击第一个搜索结果
+app.interact(scrape_id, prompt=&quot;Click the first result&quot;)
+
+# 第四步：提取当前页面内容
+final_result = app.scrape(f&quot;https://api.firecrawl.dev/v2/scrape/{scrape_id}&quot;)
+</code></pre>
+<h4>接入 MCP（让 Claude Code 直接调用）</h4>
+<p>在 <code>claude_desktop_config.json</code> 中添加：</p>
+<pre><code class="language-json">{
+  &quot;mcpServers&quot;: {
+    &quot;firecrawl-mcp&quot;: {
+      &quot;command&quot;: &quot;npx&quot;,
+      &quot;args&quot;: [&quot;-y&quot;, &quot;@mcp/firecrawl-mcp&quot;],
+      &quot;env&quot;: {
+        &quot;FIRECRAWL_API_KEY&quot;: &quot;fc-YOUR_API_KEY&quot;
+      }
+    }
+  }
+}
+</code></pre>
+<p>或者一行命令快速初始化：</p>
+<pre><code class="language-bash"># 一键安装 Firecrawl Skill，集成到 Claude Code、Cursor 等工具
+npx -y firecrawl-cli@latest init --all --browser
+</code></pre>
+<hr>
+<h2>💡 使用建议</h2>
+<h3>✅ 什么时候用</h3>
+<ul>
+<li>你的 AI Agent 需要实时获取网页上的最新信息（如新闻、价格、天气）。</li>
+<li>你在构建 RAG 系统，需要把大量网页内容转为干净的 Markdown 喂给 LLM。</li>
+<li>目标网站是 JS 渲染的 React/Vue/Next.js 应用，传统爬虫搞不定。</li>
+<li>你需要模拟用户操作（点击、滚动、填写表单）才能获取目标内容。</li>
+<li>你想快速为 AI 工具集成&quot;网页浏览&quot;能力，而不想自己维护爬虫基础设施。</li>
+</ul>
+<h3>❌ 什么时候不用</h3>
+<ul>
+<li>你只需要抓取少量静态 HTML 页面，用 <code>requests + BeautifulSoup</code> 更轻量、更灵活。</li>
+<li>你对数据隐私有极高要求，网页内容不能经过任何第三方服务器（此时应考虑 Self-hosted 方案，但需注意 AGPL-3.0 许可证的传染性——如果你修改了 Firecrawl 代码并对外提供服务，你的服务也必须开源）。</li>
+<li>你需要极高频率的抓取（每秒数百次），API 速率限制可能会成为瓶颈。</li>
+<li>目标网站有极严格的反爬机制（如 Cloudflare Turnstile 验证码），虽然 Firecrawl 已覆盖 96% 的网页，但极端情况仍可能失败。</li>
+</ul>
+<h3>👥 适合人群</h3>
+<ul>
+<li><strong>AI 应用开发者</strong>：正在构建基于 LLM 的 Agent、Chatbot、RAG 系统，需要网页作为数据源。</li>
+<li><strong>数据工程师</strong>：需要大规模、自动化地收集网页数据用于分析或训练。</li>
+<li><strong>MCP 工具开发者</strong>：想为 AI 工具（Claude Code、Cursor、OpenCode 等）增加网页浏览能力。</li>
+<li><strong>创业团队/独立开发者</strong>：不想花时间维护爬虫基础设施，想用最少代码快速获取网页数据。</li>
+</ul>
+<hr>
+<h2>🔗 相关链接</h2>
+<ul>
+<li><strong>GitHub 仓库</strong>：<a href="https://github.com/firecrawl/firecrawl">https://github.com/firecrawl/firecrawl</a></li>
+<li><strong>官方网站</strong>：<a href="https://firecrawl.dev">https://firecrawl.dev</a></li>
+<li><strong>在线 Playground</strong>：<a href="https://firecrawl.dev/playground">https://firecrawl.dev/playground</a></li>
+<li><strong>官方文档</strong>：<a href="https://docs.firecrawl.dev">https://docs.firecrawl.dev</a></li>
+<li><strong>Discord 社区</strong>：<a href="https://discord.gg/firecrawl">https://discord.gg/firecrawl</a></li>
+<li><strong>Twitter</strong>：<a href="https://twitter.com/firecrawl">https://twitter.com/firecrawl</a></li>
+<li><strong>LinkedIn</strong>：<a href="https://www.linkedin.com/company/104100957">https://www.linkedin.com/company/104100957</a></li>
+</ul>
+<hr>
+<blockquote>
+<p>📣 <strong>总结</strong>：Firecrawl 把复杂的网页抓取和数据提取封装成了一个简洁的 API，尤其适合 AI Agent 生态。它的开源特性让开发者可以 Self-hosted 部署，而云服务版本则提供了开箱即用的便利。如果你正在构建需要&quot;理解网页&quot;的 AI 应用，Firecrawl 值得放进你的工具箱。</p>
+</blockquote>
+
+</body>
+</html>
